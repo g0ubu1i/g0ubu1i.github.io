@@ -21,7 +21,7 @@
     <link href="/2023/10/21/buuctf-Crypto/"/>
     <url>/2023/10/21/buuctf-Crypto/</url>
     
-    <content type="html"><![CDATA[<h1 id="buuctf-Crypto"><a href="#buuctf-Crypto" class="headerlink" title=" buuctf-Crypto"></a><center> buuctf-Crypto</h1><h2 id="一眼就解密"><a href="#一眼就解密" class="headerlink" title="一眼就解密"></a>一眼就解密</h2><p>根据题目可以看出密文为base64编码<br><img src="/pic/buuctf-Crypto/%E4%B8%80%E7%9C%BC%E5%B0%B1%E8%A7%A3%E5%AF%86/1.png" alt="第一步"><br>使用Cyberchef解密<br><img src="/buuctf-Crypto/%E4%B8%80%E7%9C%BC%E5%B0%B1%E8%A7%A3%E5%AF%86-2.png" alt="第二步"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="buuctf-Crypto"><a href="#buuctf-Crypto" class="headerlink" title=" buuctf-Crypto"></a><center> buuctf-Crypto</h1><h2 id="一眼就解密"><a href="#一眼就解密" class="headerlink" title="一眼就解密"></a>一眼就解密</h2><p>根据题目可以看出密文为base64编码<br><img src="/pic/buuctf-Crypto/%E4%B8%80%E7%9C%BC%E5%B0%B1%E8%A7%A3%E5%AF%86/1.png" alt="第一步"><br>使用Cyberchef解密<br><img src="/pic/buuctf-Crypto/%E4%B8%80%E7%9C%BC%E5%B0%B1%E8%A7%A3%E5%AF%86/2.png" alt="第二步"></p>]]></content>
     
     
     
