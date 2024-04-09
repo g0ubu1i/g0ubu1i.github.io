@@ -1,84 +1,203 @@
+
+
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#3367D6"/>
-  <link rel="apple-touch-icon" href="/icons-192.png">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="g0ubu1i">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="ISCTF2023的writeup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ISCTF-Crypto-WP">
+<meta property="og:url" content="http://g0ubu1i.github.io/2023/12/19/ISCTF-Crypto-WP/index.html">
+<meta property="og:site_name" content="g0ubu1i的博客">
+<meta property="og:description" content="ISCTF2023的writeup">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700746031028-39b27db3-49cf-4f8f-8809-9b8278b21500.png#averageHue=%23e5e5e4&clientId=u6b7437f4-3890-4&from=paste&height=103&id=uf8c3021f&originHeight=185&originWidth=1520&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=29964&status=done&style=none&taskId=u3739fd7a-b925-4da1-b482-b8cd636fcfb&title=&width=844.4444108892384">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700997337918-38b1d65e-6691-4a8a-b510-9345626907f3.png#averageHue=%23c5bf7b&clientId=uc1ee79bf-b76a-4&from=paste&height=105&id=u14265c74&originHeight=189&originWidth=1608&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=73345&status=done&style=none&taskId=ufbcfc249-bf42-4922-85ec-a1fbd77ba19&title=&width=893.3332978354574">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006532552-78989c47-e25f-49e6-a12a-fc975160f2eb.png#averageHue=%23e3dbd3&clientId=u7fd39338-1816-4&from=paste&height=126&id=u64a34367&originHeight=157&originWidth=1310&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=7956&status=done&style=none&taskId=u44673868-3b4b-44ff-baf7-0dec9d43cf7&title=&width=1048">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006552825-641598a9-ad41-4a0e-8d2a-95b82ea74963.png#averageHue=%23e3e2e2&clientId=u7fd39338-1816-4&from=paste&height=439&id=u19d23ef1&originHeight=549&originWidth=658&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=131033&status=done&style=none&taskId=u8c29af34-4703-49a8-8cce-084f3c51004&title=&width=526.4">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006618860-19ff5f4a-d9d1-4f87-9197-0f0a63f6e375.png#averageHue=%23878550&clientId=u7fd39338-1816-4&from=paste&height=74&id=u9bc3d58e&originHeight=92&originWidth=1314&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=1430&status=done&style=none&taskId=ued3d8d80-0cef-467d-86bd-aeacc35600d&title=&width=1051.2">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006625828-a78b9aee-4a48-473d-865a-9b790536295c.png#averageHue=%231b252f&clientId=u7fd39338-1816-4&from=paste&height=194&id=ue24a5816&originHeight=242&originWidth=841&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=4076&status=done&style=none&taskId=u73fae066-09bd-4399-8488-58c77061625&title=&width=672.8">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700995961287-6dd5b7d8-8442-4eaa-9d00-1773397afef2.png#averageHue=%23c6ba6d&clientId=uc1ee79bf-b76a-4&from=paste&height=62&id=ueb20a2d5&originHeight=112&originWidth=1211&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=36898&status=done&style=none&taskId=ub2ba63f5-8574-45b7-b716-8f97f6543ba&title=&width=672.7777510439919">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700996192309-5bb7499b-7e2b-4291-beec-f0e0d43696f1.png#averageHue=%232a2c36&clientId=uc1ee79bf-b76a-4&from=paste&height=203&id=u9c2737a7&originHeight=365&originWidth=891&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=140985&status=done&style=none&taskId=uc8d94884-665c-45a8-8a73-938dd1d3dd7&title=&width=494.999980330468">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/__latex/c659954e3100608cbfff9c24e6fff3b8.svg#card=math&code=%5Cbegin%7Bequation%7D%0Aleak%20%5Cequiv%20e%5E2%20%2As%20%2Bk%20%5Cpmod%20f%5C%5C%0A%0A%0A%0A%0A%5Cend%7Bequation%7D&id=OYZvC">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/__latex/e5e7a65596a06bbd5c722ba70be44d62.svg#card=math&code=e%5E2%2As%20%3D%20%28leak-k%29%25f&id=zXCWo">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/__latex/71899756fe6ef8b1aeeceba98bf145e7.svg#card=math&code=%5Cbegin%7Baligned%7D%0A%0Aleak%20%26%3D%20e%5E2%2As%20%2B%20t%2A%5Cvarphi%28n%29%20%2As%20%5C%5C%0Aphis%3Dleak%20-%20e%5E2%2As%26%20%3D%20t%2A%5Cvarphi%28n%29%20%2As%20%5C%5C%0A%0A%5Ctherefore%20s%20%26%3D%20gcd%28e%5E2%2As%2Cphis%29%0A%5Cend%7Baligned%7D&id=dPb7T">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/__latex/ffac15aa0bf092af33c5dde483eaef50.svg#card=math&code=e%20%3D%20iroot%28e2_s%20%2F%2Fs%2C2%29%5B0%5D%5C%5C%0Aphi%20%3D%20phis%20%2F%2F%20s&id=Dox8o">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39265092/1701250671509-3b14c83a-aeb2-44aa-a4e5-f60c02777d48.png#averageHue=%2332302e&clientId=u1c6995b6-8d83-4&from=paste&height=147&id=ua5661061&originHeight=265&originWidth=561&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=38249&status=done&style=none&taskId=u1e07c220-f2e4-4f33-903f-47446620b98&title=&width=311.6666542821465">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/39265092/1701084819968-981a6332-2391-4265-9e2c-027884fcbb54.png#averageHue=%23c7d46e&clientId=uc3c77ab4-f351-4&from=paste&height=71&id=uc75a8d9e&originHeight=128&originWidth=857&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=32377&status=done&style=none&taskId=u8b7fb70d-4813-4ca3-8a20-6ef852dc151&title=&width=476.1110921921561">
+<meta property="article:published_time" content="2023-12-19T05:52:08.000Z">
+<meta property="article:modified_time" content="2023-12-19T06:08:19.863Z">
+<meta property="article:author" content="g0ubu1i">
+<meta property="article:tag" content="Writeup">
+<meta property="article:tag" content="ISCTF">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700746031028-39b27db3-49cf-4f8f-8809-9b8278b21500.png#averageHue=%23e5e5e4&clientId=u6b7437f4-3890-4&from=paste&height=103&id=uf8c3021f&originHeight=185&originWidth=1520&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=29964&status=done&style=none&taskId=u3739fd7a-b925-4da1-b482-b8cd636fcfb&title=&width=844.4444108892384">
+  
+  
+  
+  <title>ISCTF-Crypto-WP - g0ubu1i的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"g0ubu1i.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-  
 
-  
-    <meta name="author" content="g0ubu1i">
-  
-
-  
-
-  
-
-  <title>ISCTF-Crypto-WP | g0ubu1i的博客</title>
-
-  
-
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-
-  <!--mathjax latex数学公式显示支持-->
-  
-  
-
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@1.1.13/index.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/monokai.min.css">
-  
-
-  
-
-  
-<link rel="stylesheet" href="/css/style.css">
-
-</head>
 <body>
-  <div class="root-container">
-    
-<!-- header container -->
-<header class="header-container post">
-  
-    <div class="post-image" style="background-image: url(https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg)"></div>
   
 
-  <!-- navbar -->
-<nav class="navbar">
-  <div class="navbar-content">
-    <!-- logo -->
-    <div class="navbar-logo">
-      <a href="/">
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          g0ubu1i的博客
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
         
-      </a>
-    </div>
-    <!-- link -->
-    <div class="navbar-link">
-      <div class="navbar-btn">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <ul class="navbar-list">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
         
-          <li class="navbar-list-item"><a href="/">首页</a></li>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
         
-          <li class="navbar-list-item"><a href="/links">友链</a></li>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
         
-          <li class="navbar-list-item"><a href="/about">关于</a></li>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
         
       </ul>
     </div>
@@ -86,83 +205,110 @@
 </nav>
 
   
-  
 
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-    <div class="header-content">
-      <div class="post-text layout-block">
-        <div class="layout-margin">
-          <h1 class="title-wrap">ISCTF-Crypto-WP</h1>
-          <h2 class="title-sub-wrap">
-            <strong>g0ubu1i</strong>
-            <span>发布于</span>
-            <time  class="article-date" datetime="2023-12-19T05:52:08.000Z" itemprop="datePublished">2023-12-19</time>
-          </h2>
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
+            <span id="subtitle" data-typed-text="ISCTF-Crypto-WP"></span>
           
-          <ul class="wrap-list dark">
-  
-    <li><a href="/categories/Writeup/">📒 Writeup</a></li>
-    
-</ul>
-          <ul class="wrap-list dark">
-  
-    <li><a href="/tags/Writeup/">🏷️ Writeup</a></li>
-  
-    <li><a href="/tags/ISCTF/">🏷️ ISCTF</a></li>
-  
-</ul>
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-19 13:52" pubdate>
+          December 19, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          751 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
-  
+  </div>
+</div>
 
-  
-  
-  
-</header>
+</div>
 
-    <!-- 文章 -->
+  </header>
 
-<!-- 文章内容 -->
-<div class="body-container">
-  <article class="content-container layout-block post-container">
-    <div class="article-info">
+  <main>
+    
       
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      
-      
-      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="七七的欧拉"><a href="#七七的欧拉" class="headerlink" title="七七的欧拉"></a>七七的欧拉</h2><p>解题人：g0ubu1i<br>分解n后发现为某数的次方<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700746031028-39b27db3-49cf-4f8f-8809-9b8278b21500.png#averageHue=%23e5e5e4&clientId=u6b7437f4-3890-4&from=paste&height=103&id=uf8c3021f&originHeight=185&originWidth=1520&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=29964&status=done&style=none&taskId=u3739fd7a-b925-4da1-b482-b8cd636fcfb&title=&width=844.4444108892384" alt="image.png"><br>根据欧拉定理，phi&#x3D;p<strong>8 - p</strong>7，求得d解出题</p>
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">ISCTF-Crypto-WP</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="七七的欧拉"><a href="#七七的欧拉" class="headerlink" title="七七的欧拉"></a>七七的欧拉</h2><p>解题人：g0ubu1i<br>分解n后发现为某数的次方<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700746031028-39b27db3-49cf-4f8f-8809-9b8278b21500.png#averageHue=%23e5e5e4&clientId=u6b7437f4-3890-4&from=paste&height=103&id=uf8c3021f&originHeight=185&originWidth=1520&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=29964&status=done&style=none&taskId=u3739fd7a-b925-4da1-b482-b8cd636fcfb&title=&width=844.4444108892384" srcset="/img/loading.gif" lazyload alt="image.png"><br>根据欧拉定理，phi&#x3D;p<strong>8 - p</strong>7，求得d解出题</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">from gmpy2 import *</span><br><span class="line"></span><br><span class="line">e=8401285423075497989963572888601376313375827722858883767564499066473101615084214973041844878664837606157257039358849583049856161628241418012475432529735909</span><br><span class="line">n=4321524416983780646994834778612486851863709339970595612409550086067211224407144019110798099401660010305645681548980160563216101786447875231976835115531375372678886339587480251211072894186558627897353793098608766868067029578667171419890150599640781594755080391489447462042167529203389236065727274166091741227068469987681083794139925327545810024038937132463518225611578727737940746784891867532498184642892826569777559107609493212332054559366409007685504768163376250281644004067745087899653778023414105973047620041288118404657934689253192043728590231618132716567084621670074256312939305265244486145758609971249077639085204680923108132415216543541472534580414274250979940330459551536830268428508217821060604260805109071534457808355664329902779603050878055690772430842865701249378096775899778255848773171108341331128673249899037133851535556515961699925809139476576825524135111237249709241579903807179252011010794867269715170739895392375920757559721516050680666658719990497863646989338960261844762127142439486275294670858114079687572243312184222126710967744971775585723045524467708387051034760208768956889939050498139189352842087278125173957182804116052402778416216669522309692266036094371308166663738284209615212016564171075874421472070422416318901926525719485991792111414333398004433143751908199358861514725313334333703539239414806773743941986164981642517673117412666430463318509571757766510835600758060976848374353352239044908034501477295696684294816091801944163877509558909040753907584672390823893991672246726026216973013330313971007514064831801564703364591696610900089228302936595848024616691878437618798864186634802647568239526771151323609650598156701595265876736712670677452013054393336294483452480213271032488201259990782289047132105989846972462094302132564809025802421057537091870932014884606863807260521123084423689494401900014232257381801590783735595575258160274248494498550583673688754220860142413631521279464318987425447302135444093663034598455694901199312497459228254746451233078954904159983269585883146959928222698672413648364391121696092287848931565798557217897678221379451042304811449415982434055522599829843482810025780349284547491767219221510351411192251236517341826619338084348136539121415210345488359563985046136632077665460793346345051213014836088333266911684271237227766588616771431226302155269893547077232087387411935345207081799500649921586279416751311277417949192360648342427657867424947189027886922112452681434778850977010752230391327878892161</span><br><span class="line">c=1319666577538961333645698288755316431847498788803191213042970951363587036899021668814931340784440773619019635330248746606532233949080268712626456845590851812018539646705520729734738948568349756255640832936325965096602018372418260009779997764653043892043725224481361578258532294625476542003357969893609762981355267857532927948279737945466285738730414948695579002627741734690862181161919734547857550654813379550806374778412603233570494684223057004866601064851006909940259029023083838730497564657690493780040030061594915385886594845808342023634855913932575150487723897981518504381563064479784253539091893925934095008385592529031453149337783826491324308222762190756839839091742536583068791632135883271750510776330897598323339568926234205068941397524390446254057404779041850572848212437589629794980799894974937730065394307284096622814438575278571743516485062058882794531407454597341604166586040406867868323002258035737328450923576878935675998377134860357842547595516243737449809845708319003744144753130977649201725370898918939022097783844477196723482879094829249203949784703408369396219233552019108990900029123063369670129291960293576115301371071209198455299007327352602249399500334424934488528506773472420414119617828578424633182320749576697196936762283306228974126242434663703609495003656244194067493769815032134577138807799395279843708630774412341952691146906264694889245375545635688534662371202213660012977431598746482601668122679279419039288257069843297770840263002870206849857995148396439717143553611140228607531647245352254251824086797704561756363448681983654454393569932173970943157225527780067126895832370645456372127507057750232257828579628856504832975775855059816283684123444984393171125206440588627925736223222718784319209561804023835238526792966229582251575475514349566824846911411659740321154272534589694497411065971714157409318007179403833025337349924938487211920583780456897879801099476865645416182025930390267064170271613760577949655548949317295792361772032185463678410983568470647837758657058230086368185901572658482084202212103405161775243930901117532775865963215971025744893777631306256061896284125630451368067313753222195227231131526000755922331413457862253392530308284156400411897252674398583100198330007779643967156773216464341590817951828849769679134515304258819218015083183653130972243262400248230445031327719507314015062447355358100770763425336581258193908638241498461735819218673116282476452340137513156421147748432605954889277898079292196216</span><br><span class="line">p = 90043967260093945222624152587689121936371930974666442796337497007806436220933640104101224556701782897110707124711581073042785835680900647501045466519201150330902139448582877574558481499349246396434566916237734745291901204887326075328782341527220826176727297933741479223587035887696689567725839887008586221103</span><br><span class="line"></span><br><span class="line">phi = p**8 - p**7</span><br><span class="line">d = gmpy2.invert(e,phi)</span><br><span class="line">print(long_to_bytes(pow(c,d,n)))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700997337918-38b1d65e-6691-4a8a-b510-9345626907f3.png#averageHue=%23c5bf7b&clientId=uc1ee79bf-b76a-4&from=paste&height=105&id=u14265c74&originHeight=189&originWidth=1608&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=73345&status=done&style=none&taskId=ufbcfc249-bf42-4922-85ec-a1fbd77ba19&title=&width=893.3332978354574" alt="image.png"></p>
-<h2 id="夹里夹气"><a href="#夹里夹气" class="headerlink" title="夹里夹气"></a>夹里夹气</h2><p>解题人：dmw<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006532552-78989c47-e25f-49e6-a12a-fc975160f2eb.png#averageHue=%23e3dbd3&clientId=u7fd39338-1816-4&from=paste&height=126&id=u64a34367&originHeight=157&originWidth=1310&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=7956&status=done&style=none&taskId=u44673868-3b4b-44ff-baf7-0dec9d43cf7&title=&width=1048" alt="b489aa1f37a1f079f0c1ebcfa9008b59.png"><br>题目提示摩斯密码，看摩斯密码表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006552825-641598a9-ad41-4a0e-8d2a-95b82ea74963.png#averageHue=%23e3e2e2&clientId=u7fd39338-1816-4&from=paste&height=439&id=u19d23ef1&originHeight=549&originWidth=658&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=131033&status=done&style=none&taskId=u8c29af34-4703-49a8-8cce-084f3c51004&title=&width=526.4" alt="143dc4b5d5ee47edf8e766e16f7eaa26.png"><br>根据flag外壳可以推断<br>嘤嘤？&#x3D;.     嘤嘤嘤&#x3D;-<br>得到<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006618860-19ff5f4a-d9d1-4f87-9197-0f0a63f6e375.png#averageHue=%23878550&clientId=u7fd39338-1816-4&from=paste&height=74&id=u9bc3d58e&originHeight=92&originWidth=1314&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=1430&status=done&style=none&taskId=ued3d8d80-0cef-467d-86bd-aeacc35600d&title=&width=1051.2" alt="9a8afff99834cc6f54adcb9a9810ce86.png"><br>解密得到flag：ISCTF{HSBDH_SFJ_JDNFJ_DJNFJDM}<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006625828-a78b9aee-4a48-473d-865a-9b790536295c.png#averageHue=%231b252f&clientId=u7fd39338-1816-4&from=paste&height=194&id=ue24a5816&originHeight=242&originWidth=841&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=4076&status=done&style=none&taskId=u73fae066-09bd-4399-8488-58c77061625&title=&width=672.8" alt="a165f1b0cfaf5c2b1921dde084ed1e69.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700997337918-38b1d65e-6691-4a8a-b510-9345626907f3.png#averageHue=%23c5bf7b&clientId=uc1ee79bf-b76a-4&from=paste&height=105&id=u14265c74&originHeight=189&originWidth=1608&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=73345&status=done&style=none&taskId=ufbcfc249-bf42-4922-85ec-a1fbd77ba19&title=&width=893.3332978354574" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h2 id="夹里夹气"><a href="#夹里夹气" class="headerlink" title="夹里夹气"></a>夹里夹气</h2><p>解题人：dmw<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006532552-78989c47-e25f-49e6-a12a-fc975160f2eb.png#averageHue=%23e3dbd3&clientId=u7fd39338-1816-4&from=paste&height=126&id=u64a34367&originHeight=157&originWidth=1310&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=7956&status=done&style=none&taskId=u44673868-3b4b-44ff-baf7-0dec9d43cf7&title=&width=1048" srcset="/img/loading.gif" lazyload alt="b489aa1f37a1f079f0c1ebcfa9008b59.png"><br>题目提示摩斯密码，看摩斯密码表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006552825-641598a9-ad41-4a0e-8d2a-95b82ea74963.png#averageHue=%23e3e2e2&clientId=u7fd39338-1816-4&from=paste&height=439&id=u19d23ef1&originHeight=549&originWidth=658&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=131033&status=done&style=none&taskId=u8c29af34-4703-49a8-8cce-084f3c51004&title=&width=526.4" srcset="/img/loading.gif" lazyload alt="143dc4b5d5ee47edf8e766e16f7eaa26.png"><br>根据flag外壳可以推断<br>嘤嘤？&#x3D;.     嘤嘤嘤&#x3D;-<br>得到<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006618860-19ff5f4a-d9d1-4f87-9197-0f0a63f6e375.png#averageHue=%23878550&clientId=u7fd39338-1816-4&from=paste&height=74&id=u9bc3d58e&originHeight=92&originWidth=1314&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=1430&status=done&style=none&taskId=ued3d8d80-0cef-467d-86bd-aeacc35600d&title=&width=1051.2" srcset="/img/loading.gif" lazyload alt="9a8afff99834cc6f54adcb9a9810ce86.png"><br>解密得到flag：ISCTF{HSBDH_SFJ_JDNFJ_DJNFJDM}<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39174886/1701006625828-a78b9aee-4a48-473d-865a-9b790536295c.png#averageHue=%231b252f&clientId=u7fd39338-1816-4&from=paste&height=194&id=ue24a5816&originHeight=242&originWidth=841&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=4076&status=done&style=none&taskId=u73fae066-09bd-4399-8488-58c77061625&title=&width=672.8" srcset="/img/loading.gif" lazyload alt="a165f1b0cfaf5c2b1921dde084ed1e69.png"></p>
 <h2 id="easy-rsa"><a href="#easy-rsa" class="headerlink" title="easy_rsa"></a>easy_rsa</h2><p>解题人：g0ubu1i<br>获取附件后nc连接，得到pqec，编写脚本求m</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">from gmpy2 import *</span><br><span class="line"></span><br><span class="line">p=167561191404321668748830155982148128078094297761744585473561597817468679161266224937726777063364341455943741358249714181954186947851755403287400313044668068915799453457253339629929712548154901350977293977396925064084110789695911728228292958713708869220389929513985054498626193204179190043233878936508865839033</span><br><span class="line">q=158850164670351411226854199870571072891191250008284001651273515387478727731321002321763694826236623788860130822650234773829136028319501896718021031170321199126229125742927056311652861918625254681349069189136573855288383606649620226798427177954527952663485539668001819685952435682898253076761435373461926046137</span><br><span class="line">e=65537</span><br><span class="line">c=4242413297580463331572289283614465576920321904916668533268592047566389769615853283522402653147881010365969562119872301345718233952127637191547842532720861202915213183417888317518184193386552827375852739915676012379130542280256557996822960648308856834792396590872307646080450688311758622439062833141968275861674897506922516574551903131353406719045301549179127740987746392700068342699602004118628459557889230235166487708932077823995407170566299934821909316066022781254941124247363837047877775106189816885421001854139347246364493895035678034310316567263582591786939062838380261769117834938911059384946629475006205178429</span><br><span class="line"></span><br><span class="line">d = inverse(e, (p-1)*(q-1))</span><br><span class="line">print(long_to_bytes(pow(c, d, p*q)))</span><br></pre></td></tr></table></figure>
 
-<p>得到flag<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700995961287-6dd5b7d8-8442-4eaa-9d00-1773397afef2.png#averageHue=%23c6ba6d&clientId=uc1ee79bf-b76a-4&from=paste&height=62&id=ueb20a2d5&originHeight=112&originWidth=1211&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=36898&status=done&style=none&taskId=ub2ba63f5-8574-45b7-b716-8f97f6543ba&title=&width=672.7777510439919" alt="image.png"></p>
+<p>得到flag<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700995961287-6dd5b7d8-8442-4eaa-9d00-1773397afef2.png#averageHue=%23c6ba6d&clientId=uc1ee79bf-b76a-4&from=paste&height=62&id=ueb20a2d5&originHeight=112&originWidth=1211&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=36898&status=done&style=none&taskId=ub2ba63f5-8574-45b7-b716-8f97f6543ba&title=&width=672.7777510439919" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <h2 id="rsa-d"><a href="#rsa-d" class="headerlink" title="rsa_d"></a>rsa_d</h2><p>解题人：g0ubu1i<br>nc连接靶机后要求计算d<br>写脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">from gmpy2 import *</span><br><span class="line"></span><br><span class="line">p=43625867</span><br><span class="line">q=5050993</span><br><span class="line">e=65537</span><br><span class="line"></span><br><span class="line">d = inverse(e, (p-1)*(q-1))</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700996192309-5bb7499b-7e2b-4291-beec-f0e0d43696f1.png#averageHue=%232a2c36&clientId=uc1ee79bf-b76a-4&from=paste&height=203&id=u9c2737a7&originHeight=365&originWidth=891&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=140985&status=done&style=none&taskId=uc8d94884-665c-45a8-8a73-938dd1d3dd7&title=&width=494.999980330468" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1700996192309-5bb7499b-7e2b-4291-beec-f0e0d43696f1.png#averageHue=%232a2c36&clientId=uc1ee79bf-b76a-4&from=paste&height=203&id=u9c2737a7&originHeight=365&originWidth=891&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=140985&status=done&style=none&taskId=uc8d94884-665c-45a8-8a73-938dd1d3dd7&title=&width=494.999980330468" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <h2 id="ezRSA-τ"><a href="#ezRSA-τ" class="headerlink" title="ezRSA(τ)"></a>ezRSA(τ)</h2><p>解题人：g0ubu1i</p>
 <h3 id="step1"><a href="#step1" class="headerlink" title="step1:"></a>step1:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">step1</span>(<span class="params">m</span>):</span><br><span class="line">	p,q = getPrime(<span class="number">1024</span>),getPrime(<span class="number">1024</span>)</span><br><span class="line">	n=p*q</span><br><span class="line">	e=getPrime(<span class="number">512</span>)</span><br><span class="line">	phi = (p-<span class="number">1</span>)*(q-<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">while</span> gcd(e,phi) != <span class="number">1</span>:</span><br><span class="line">		e=getPrime(<span class="number">512</span>)</span><br><span class="line">	d = <span class="built_in">pow</span>(e,-<span class="number">1</span>,phi)</span><br><span class="line">	k = randint(<span class="number">800</span>,<span class="number">1500</span>)</span><br><span class="line">	f = factor(k)</span><br><span class="line">	<span class="comment"># print(f&quot;\n\n\n\n&#123;k=&#125;\n\n\n\n&quot;)</span></span><br><span class="line">	leak = (<span class="built_in">pow</span>(e, <span class="number">2</span>) + (e*d - <span class="number">1</span>)*f)*getPrime(<span class="number">256</span>) + k 	<span class="comment"># (e**2 + (e*d-1)*k!)*x + k </span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;n=&#125;</span>&quot;</span>)</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;leak=&#125;</span>&quot;</span>)</span><br><span class="line">	e = <span class="number">65537</span></span><br><span class="line">	c = <span class="built_in">pow</span>(m,e,n)</span><br><span class="line">	<span class="keyword">return</span> c</span><br></pre></td></tr></table></figure>
 
-<p>根据output.txt我们有n，c，leak，而leak等于<br>![](D:\blog\hexo-blog\source_posts\ISCTF-Crypto-WP\3011dd7c7fb1be06026dcfd5f4dd1514.svg#card&#x3D;math&amp;code&#x3D;leak %3D (pow(e%2C2)%2B(e^d - 1)f)getPrime(256) %2B k&amp;id&#x3D;ReRjY)<br>且phi &#x3D; e<strong>d - 1，f为k的阶乘<br>由于给定的k的范围比较小，所以可以爆破k。<br>给leak%f后得到<br><img src="https://cdn.nlark.com/yuque/__latex/c659954e3100608cbfff9c24e6fff3b8.svg#card=math&code=%5Cbegin%7Bequation%7D%0Aleak%20%5Cequiv%20e%5E2%20%2As%20%2Bk%20%5Cpmod%20f%5C%5C%0A%0A%0A%0A%0A%5Cend%7Bequation%7D&id=OYZvC"><br><img src="https://cdn.nlark.com/yuque/__latex/e5e7a65596a06bbd5c722ba70be44d62.svg#card=math&code=e%5E2%2As%20%3D%20%28leak-k%29%25f&id=zXCWo"><br>由此确定e</strong>2<em>s为1280位且不是素数<br>由推导<br><img src="https://cdn.nlark.com/yuque/__latex/71899756fe6ef8b1aeeceba98bf145e7.svg#card=math&code=%5Cbegin%7Baligned%7D%0A%0Aleak%20%26%3D%20e%5E2%2As%20%2B%20t%2A%5Cvarphi%28n%29%20%2As%20%5C%5C%0Aphis%3Dleak%20-%20e%5E2%2As%26%20%3D%20t%2A%5Cvarphi%28n%29%20%2As%20%5C%5C%0A%0A%5Ctherefore%20s%20%26%3D%20gcd%28e%5E2%2As%2Cphis%29%0A%5Cend%7Baligned%7D&id=dPb7T"><br>由此确定e**2</em>s为1280位且不是素数<br>由上述条件可得到确定e的条件，写代码</p>
+<p>根据output.txt我们有n，c，leak，而leak等于<br>![](D:\blog\hexo-blog\source_posts\ISCTF-Crypto-WP\3011dd7c7fb1be06026dcfd5f4dd1514.svg#card&#x3D;math&amp;code&#x3D;leak %3D (pow(e%2C2)%2B(e^d - 1)f)getPrime(256) %2B k&amp;id&#x3D;ReRjY)<br>且phi &#x3D; e<strong>d - 1，f为k的阶乘<br>由于给定的k的范围比较小，所以可以爆破k。<br>给leak%f后得到<br><img src="https://cdn.nlark.com/yuque/__latex/c659954e3100608cbfff9c24e6fff3b8.svg#card=math&code=%5Cbegin%7Bequation%7D%0Aleak%20%5Cequiv%20e%5E2%20%2As%20%2Bk%20%5Cpmod%20f%5C%5C%0A%0A%0A%0A%0A%5Cend%7Bequation%7D&id=OYZvC" srcset="/img/loading.gif" lazyload><br><img src="https://cdn.nlark.com/yuque/__latex/e5e7a65596a06bbd5c722ba70be44d62.svg#card=math&code=e%5E2%2As%20%3D%20%28leak-k%29%25f&id=zXCWo" srcset="/img/loading.gif" lazyload><br>由此确定e</strong>2<em>s为1280位且不是素数<br>由推导<br><img src="https://cdn.nlark.com/yuque/__latex/71899756fe6ef8b1aeeceba98bf145e7.svg#card=math&code=%5Cbegin%7Baligned%7D%0A%0Aleak%20%26%3D%20e%5E2%2As%20%2B%20t%2A%5Cvarphi%28n%29%20%2As%20%5C%5C%0Aphis%3Dleak%20-%20e%5E2%2As%26%20%3D%20t%2A%5Cvarphi%28n%29%20%2As%20%5C%5C%0A%0A%5Ctherefore%20s%20%26%3D%20gcd%28e%5E2%2As%2Cphis%29%0A%5Cend%7Baligned%7D&id=dPb7T" srcset="/img/loading.gif" lazyload><br>由此确定e**2</em>s为1280位且不是素数<br>由上述条件可得到确定e的条件，写代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">800</span>, <span class="number">1042</span>):</span><br><span class="line">    f = <span class="built_in">int</span>(factor(k))</span><br><span class="line">    e2_s = (leak-k) % <span class="built_in">int</span>(f)</span><br><span class="line">    phis = (leak -k - e2_s) // f </span><br><span class="line"></span><br><span class="line">    s = GCD(tphi,e2_s)</span><br><span class="line">    <span class="keyword">if</span> e2s.bit_length() == <span class="number">1280</span> <span class="keyword">and</span> isPrime(e2s)==<span class="literal">False</span> <span class="keyword">and</span> s.bit_length()&gt;=<span class="number">255</span>:</span><br><span class="line">        <span class="built_in">print</span>(k)</span><br><span class="line">        <span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
 
-<p>即可得到k，s，继续推导可得到phi与e<br><img src="https://cdn.nlark.com/yuque/__latex/ffac15aa0bf092af33c5dde483eaef50.svg#card=math&code=e%20%3D%20iroot%28e2_s%20%2F%2Fs%2C2%29%5B0%5D%5C%5C%0Aphi%20%3D%20phis%20%2F%2F%20s&id=Dox8o"><br>由此解出第一部分</p>
+<p>即可得到k，s，继续推导可得到phi与e<br><img src="https://cdn.nlark.com/yuque/__latex/ffac15aa0bf092af33c5dde483eaef50.svg#card=math&code=e%20%3D%20iroot%28e2_s%20%2F%2Fs%2C2%29%5B0%5D%5C%5C%0Aphi%20%3D%20phis%20%2F%2F%20s&id=Dox8o" srcset="/img/loading.gif" lazyload><br>由此解出第一部分</p>
 <h3 id="step2："><a href="#step2：" class="headerlink" title="step2："></a>step2：</h3><p>首先考察LCG算法，由LCG算法恢复出p</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,getrandbits</span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> factorial <span class="keyword">as</span> factor</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> is_prime <span class="keyword">as</span> is_strongPrime</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> gcd</span><br><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> s2n</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gcd</span>(<span class="params">a,b</span>): </span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>): </span><br><span class="line">        <span class="keyword">return</span> a </span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        <span class="keyword">return</span> gcd(b,a%b) </span><br><span class="line">leak2 =  [<span class="number">362437850887271063413256292444148642949623196635276044583204094265607936120337004605360832421011</span>, <span class="number">1932915843524327487337992118762711929552569713433223514001673251237692307587356544615955431611435994003602897830069566867051943572065473955405337889221398</span>, <span class="number">11222178024143398739150445814520244630341642052876364179793404105841311693968292227072031763726153574031884490677131749512430325919668649359617953965112844</span>, <span class="number">5408933876805830533113961512210040977462510675785228477646978801328722923647434079128879371684477664804744431834418916837956820965870203842552250165916773</span>, <span class="number">1447143741705069323823257922715038721270982554690635708441585728089036094805730054505696492295730683300002193478561819037345041940787115528445592303142510</span>, <span class="number">3707657531268843465369646969917923274507341341483950204025637357600814449263032574496424566705812439915548150679438579110456264431525526309588664326456861</span>, <span class="number">9263925820149827740182684692442727161206242182976684575667062235695526783971703826794731732152445051579616121306722939129265340347908823003172137299057843</span>, <span class="number">207494591333501391015462321304802957885928775185602834554977737560856036337667840127810136802887548047878444936730742505483927963807357904024967768148122</span>, <span class="number">7052936859446617933917872361389151092893299250603966165472023802877016733939957851026719428770748111897050866474067880613419756475700748999497496482278608</span>, <span class="number">1169538791889404037461397919075674424569430764451305755000680272926397357803359328850780774937432248011264334398346178303234064891680342161511829008635621</span>]</span><br><span class="line">t = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">    t.append(leak2[i]-leak2[i-<span class="number">1</span>]) </span><br><span class="line">all_n = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">    all_n.append(gcd((t[i+<span class="number">1</span>]*t[i-<span class="number">1</span>]-t[i]*t[i]), (t[i+<span class="number">2</span>]*t[i]-t[i+<span class="number">1</span>]*t[i+<span class="number">1</span>]))) </span><br><span class="line"></span><br><span class="line">MMI = <span class="keyword">lambda</span> A, n,s=<span class="number">1</span>,t=<span class="number">0</span>,N=<span class="number">0</span>: (n &lt; <span class="number">2</span> <span class="keyword">and</span> t%N <span class="keyword">or</span> MMI(n, A%n, t, s-A//n*t, N <span class="keyword">or</span> n),-<span class="number">1</span>)[n&lt;<span class="number">1</span>] <span class="comment">#逆元计算</span></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> all_n:</span><br><span class="line">    p=<span class="built_in">abs</span>(p)</span><br><span class="line">    <span class="keyword">if</span> p==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    a=(leak2[<span class="number">2</span>]-leak2[<span class="number">1</span>])*MMI((leak2[<span class="number">1</span>]-leak2[<span class="number">0</span>]),p)%p</span><br><span class="line">    ani=MMI(a,p)</span><br><span class="line">    b=(leak2[<span class="number">1</span>]-a*leak2[<span class="number">0</span>])%p</span><br><span class="line">    seed = (ani*(leak2[<span class="number">0</span>]-b))%p</span><br><span class="line">    plaintext=seed</span><br><span class="line">    q = n // p</span><br><span class="line">    <span class="keyword">if</span> plaintext.bit_length() &gt;= <span class="number">63</span> <span class="keyword">and</span> leak1-p-q==<span class="number">0</span>:</span><br><span class="line">        <span class="comment">#continue</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        <span class="built_in">print</span>(b)</span><br><span class="line">        <span class="built_in">print</span>(p)</span><br><span class="line">        <span class="built_in">print</span>(seed)</span><br></pre></td></tr></table></figure>
 
@@ -175,297 +321,380 @@
 <p>拿到key后可求得base，通过final求得c，求解c得到后半段密文</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">key = <span class="number">56052361</span></span><br><span class="line">base = key ^ seed</span><br><span class="line">e=<span class="number">0x10001</span></span><br><span class="line">d = inverse(e,(p-<span class="number">1</span>)*(q-<span class="number">1</span>))</span><br><span class="line">final = [<span class="number">2268617516274900905319941795987877533673889507146326516564545408684476960310333170888941124460992562245780101836116975666368936099249664924148379487909122</span>, <span class="number">1445275952377746701088629016221431744592935398639655895336779954310077866709012082302847692239730041591520169244063854849129773530127510048494782550102381</span>, <span class="number">7</span>]</span><br><span class="line">c = <span class="number">0</span></span><br><span class="line">u = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> final:</span><br><span class="line">    c += final * (base ** u)</span><br><span class="line">    u += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(<span class="built_in">pow</span>(c,d,n)))</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1701250671509-3b14c83a-aeb2-44aa-a4e5-f60c02777d48.png#averageHue=%2332302e&clientId=u1c6995b6-8d83-4&from=paste&height=147&id=ua5661061&originHeight=265&originWidth=561&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=38249&status=done&style=none&taskId=u1e07c220-f2e4-4f33-903f-47446620b98&title=&width=311.6666542821465" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1701250671509-3b14c83a-aeb2-44aa-a4e5-f60c02777d48.png#averageHue=%2332302e&clientId=u1c6995b6-8d83-4&from=paste&height=147&id=ua5661061&originHeight=265&originWidth=561&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=38249&status=done&style=none&taskId=u1e07c220-f2e4-4f33-903f-47446620b98&title=&width=311.6666542821465" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <h2 id="signin"><a href="#signin" class="headerlink" title="signin"></a>signin</h2><p>解题人：g0ubu1i<br>考点：Schmidt-Samoa密码系统</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line"></span><br><span class="line">c = 29897791365314067508830838449733707533227957127276785142837008063510003132596050393885548439564070678838696563164574990811756434599732001622138564176327233154381380717648392357672642893142367607369679906940371540867456654151408884171467638060523066406441697453971996011548195499549200103123841556085936672833238264876038160712793697159776332101536779874757463509294968879216810485825310481778472384531442206034564488532399171243463881900578407746982324779260941957792455217641883334131366614310644607114128868153897806362954456585661855569432513785225453501792356175649676419772626548071916379318631677869452985829916084336045071072493567871623113923140668031380684940109024609167449291380675124701557542736834722898328082888430566229322840781411336263268594978558564310744076581639469210462567543585251718744340216155557606004995449505782302864725856877289388008819135023371948017425832082773421030256964953984562211638060</span><br><span class="line">N = 3231913372897424708803097969843687520868057190788284975066875241636436021279559026753076528399891936983240045179193386905918743759145596242896507856007669217275515235051689758768735530529408948098860529277921046146065473333357110158008648799207873976745048714516868561754202543130629713461365314627535982379718931633528922076268531363809414255082933615667770491818402126891370106045838695484124212397783571579791558324350069782623908757815983802849109451590357380624488436968737140312471089662428308113246310588336044438265822574558816510054763215983649467009345458480077882624118620789015758507736272402998721366662352794082495441303895025585316667229865533166614969641012195668280586477033200418153345241668242651407009849656745509386158276185301334443855737552801531617549980843398648751032649895403939319648954908487619711555700124294191702406981128355348449748466449951568451135718146828444185238617155432417897711198169</span><br><span class="line">d = 220908195398117048628110042133057032501548264225985823161565460390793825899523662424732910718579350524590368287207857059670558852106434615134645183432670023784725430385048028248108677670095524205518013647694485975996499747580966911259433184798952372110628624294686853944766950244209186984164963987120416687012811346656498861438432610431705868541829977481875385468143747334359481673214618931159403123892213161430602430294790913847722073762999311674428134241956293914716183107414340330449465142849402354034926378025006749405210014879947411570380433942279355488861684317611066949685697268714760755591128598654573304969</span><br><span class="line">l = pow(2,N*d,N)-2</span><br><span class="line">x=GCD(N,pow(2,l))</span><br><span class="line">print(long_to_bytes(pow(c,d,x)))</span><br></pre></td></tr></table></figure>
 
-<p>得到flag<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1701084819968-981a6332-2391-4265-9e2c-027884fcbb54.png#averageHue=%23c7d46e&clientId=uc3c77ab4-f351-4&from=paste&height=71&id=uc75a8d9e&originHeight=128&originWidth=857&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=32377&status=done&style=none&taskId=u8b7fb70d-4813-4ca3-8a20-6ef852dc151&title=&width=476.1110921921561" alt="image.png"></p>
+<p>得到flag<br><img src="https://cdn.nlark.com/yuque/0/2023/png/39265092/1701084819968-981a6332-2391-4265-9e2c-027884fcbb54.png#averageHue=%23c7d46e&clientId=uc3c77ab4-f351-4&from=paste&height=71&id=uc75a8d9e&originHeight=128&originWidth=857&originalType=binary&ratio=1.8000000715255737&rotation=0&showTitle=false&size=32377&status=done&style=none&taskId=u8b7fb70d-4813-4ca3-8a20-6ef852dc151&title=&width=476.1110921921561" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 
-      </section>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
 
-      
-      
-        <nav class="article-nav">
-          
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+<span class="category-chains">
+  
+  
     
-    <div class="card-text">
-      
-        <a href="/2023/12/21/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">无线网络安全</h2>
-        </a>
-      
-      <div class="card-text--row">Newer</div>
-    </div>
-  </article>
-</div>
-          
-          
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-    <div class="card-text">
-      
-        <a href="/2023/11/09/%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">常见密码加密方式</h2>
-        </a>
-      
-      <div class="card-text--row">Older</div>
-    </div>
-  </article>
-</div>
-          
-        </nav>
-      
-
-      <section class="page-message-container layout-padding">
+      <span class="category-chain">
         
-
-
+  <a href="/categories/Writeup/" class="category-chain-item">Writeup</a>
   
   
 
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
-
-
-      </section>
-    </div>
-    <div class="widget-info">
-      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
-  <div class="widget-body">
-    
-      <img src="https://s.gravatar.com/avatar/2d6b803eea37de0257620d5fabee7e64?s=200&amp;r=g&amp;d=retro" class="soft-size--round soft-style--box" alt="Sukoshi">
-    
-    
-      <h2>Sukoshi</h2>
-    
-    
-      <p>贵在坚持</p>
-    
-
-    <div class="count-box">
-      <div class="count-box--item">
-        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
-</svg>
-        <span>15</span>
-      </div>
-      <div class="count-box--item">
-        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
-</svg>
-        3
-      </div>
-      <div class="count-box--item">
-        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
-</svg>
-        13
-      </div>
-    </div>
-  </div>
-</section>
-
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
       
-
+        <a href="/tags/Writeup/" class="print-no-link">#Writeup</a>
       
-<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
-  <div class="widget-title">
-    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
-</svg>
-    <span>NOTICE</span>
-  </div>
-  <div class="widget-body">
-    <p>flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block</p>
-  </div>
-</section>
-
-
-      <section class="widget-categories widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
-  <div class="widget-title">
-    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
-</svg>
-      <span>CATEGORIES</span>
-  </div>
-  <div class="widget-body">
-    <ul class="categories-list">
+        <a href="/tags/ISCTF/" class="print-no-link">#ISCTF</a>
       
-        <li class="categories-list-item">
-          <a href="/categories/Writeup/">
-            Writeup (5)
-          </a>
-        </li>
-        
-        <li class="categories-list-item">
-          <a href="/categories/Crypto/">
-            Crypto (2)
-          </a>
-        </li>
-        
-        <li class="categories-list-item">
-          <a href="/categories/%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/">
-            平台搭建 (1)
-          </a>
-        </li>
-        
-    </ul>
-  </div>
-</section>
-
-      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
-  <div class="widget-title">
-    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
-</svg>
-    <span>TAGS</span>
-  </div>
-  <div class="widget-body">
-    <div class="tags-cloud">
-      <a href="/tags/Crypto/" style="font-size: 20px;" class="tags-cloud-10">Crypto</a> <a href="/tags/GZCTF/" style="font-size: 10px;" class="tags-cloud-0">GZCTF</a> <a href="/tags/ISCTF/" style="font-size: 10px;" class="tags-cloud-0">ISCTF</a> <a href="/tags/NSSCCTF-Round-17/" style="font-size: 10px;" class="tags-cloud-0">NSSCCTF_Round_#17</a> <a href="/tags/QQ%E6%9C%BA%E5%99%A8%E4%BA%BA/" style="font-size: 10px;" class="tags-cloud-0">QQ机器人</a> <a href="/tags/SHCTF/" style="font-size: 10px;" class="tags-cloud-0">SHCTF</a> <a href="/tags/Writeup/" style="font-size: 20px;" class="tags-cloud-10">Writeup</a> <a href="/tags/buuctf/" style="font-size: 10px;" class="tags-cloud-0">buuctf</a> <a href="/tags/nuclei/" style="font-size: 10px;" class="tags-cloud-0">nuclei</a> <a href="/tags/writeup/" style="font-size: 10px;" class="tags-cloud-0">writeup</a> <a href="/tags/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/" style="font-size: 10px;" class="tags-cloud-0">公钥密码</a> <a href="/tags/%E5%90%8E%E9%87%8F%E5%AD%90%E5%AF%86%E7%A0%81/" style="font-size: 10px;" class="tags-cloud-0">后量子密码</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 10px;" class="tags-cloud-0">网络安全</a>
     </div>
-  </div>
-</section>
-    </div>
-  </article>
+  
 </div>
 
-    <!-- footer container -->
-<footer id="footer" class="footer">
-  <div class="footer-container">
-    
-    <div class="social-icons">
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ISCTF-Crypto-WP</div>
+      <div>http://g0ubu1i.github.io/2023/12/19/ISCTF-Crypto-WP/</div>
+    </div>
+    <div class="license-meta">
       
-        
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>g0ubu1i</div>
+        </div>
       
-        
       
-        
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 19, 2023</div>
+        </div>
       
-        
-          <a href="https://github.com/miiiku/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
-            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
-</svg>
-          </a>
-        
       
-        
-          <a href="https://twitter.com/guanquanhong" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
-            <svg class="icon icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M962.285714 233.142857q-38.285714 56-92.571429 95.428571 0.571429 8 0.571429 24 0 74.285714-21.714286 148.285714t-66 142-105.428571 120.285714-147.428571 83.428571-184.571429 31.142857q-154.857143 0-283.428571-82.857143 20 2.285714 44.571429 2.285714 128.571429 0 229.142857-78.857143-60-1.142857-107.428571-36.857143t-65.142857-91.142857q18.857143 2.857143 34.857143 2.857143 24.571429 0 48.571429-6.285714-64-13.142857-106-63.714286t-42-117.428571l0-2.285714q38.857143 21.714286 83.428571 23.428571-37.714286-25.142857-60-65.714286t-22.285714-88q0-50.285714 25.142857-93.142857 69.142857 85.142857 168.285714 136.285714t212.285714 56.857143q-4.571429-21.714286-4.571429-42.285714 0-76.571429 54-130.571429t130.571429-54q80 0 134.857143 58.285714 62.285714-12 117.142857-44.571429-21.142857 65.714286-81.142857 101.714286 53.142857-5.714286 106.285714-28.571429z"></path>
-</svg>
-          </a>
-        
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
       
     </div>
-     
-    <p>&copy; 2024 <a href="/" target="_blank">g0ubu1i</a></p>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/21/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" title="无线网络安全">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">无线网络安全</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/09/%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/" title="常见密码加密方式">
+                        <span class="hidden-mobile">常见密码加密方式</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
 
     
 
-    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-    <p>
-      <a href="javascript:;" id="theme-light">🌞 浅色</a>
-      <a href="javascript:;" id="theme-dark">🌛 深色</a>
-      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
-    </p>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
   </div>
-</footer>
-  </div>
+</div>
 
-  <div class="back-to-top-fixed soft-size--round soft-style--box">
-    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
-      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
-      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
-    </svg>
-  </div>
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
 
   
-  <!-- aplayer -->
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
-<!-- dplayer -->
 
 
-<!-- copy button  -->
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
 
-<!-- https://clipboardjs.com/ -->
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
 
-
-<script type="text/javascript">
-	(function () {
-		function getCodeType (elem) {
-			const classs = Array.from(elem.classList.values());
-			if (classs && classs.length > 1) {
-				return classs[1];
-			}
-			return "plain";
-		}
-
-		window.addEventListener("DOMContentLoaded", () => {
-			const copyBtnClass = "copy-btn";
-			//  instantiate clipboardjs 
-			const clipboard = new ClipboardJS('.' + copyBtnClass);
-
-			clipboard.on('success', function (e) {
-				console.info('Action:', e.action);
-				console.info('Text:', e.text);
-				console.info('Trigger:', e.trigger);
-				if (e.trigger) {
-					e.trigger.classList.add("copied");
-					setTimeout(() => {
-						e.trigger.classList.remove("copied");
-					}, 3000);
-				}
-				e.clearSelection();
-			});
-
-			clipboard.on('error', function (e) {
-				console.error('Action:', e.action);
-				console.error('Trigger:', e.trigger);
-			});
-
-			document.querySelectorAll('figure.highlight').forEach((elem) => {
-				const codeContent = elem.querySelector("td.code");
-				const copyButton = document.createElement('button');
-				copyButton.setAttribute("class", copyBtnClass);
-				copyButton.setAttribute("title", "Copy Code");
-				copyButton.setAttribute("data-clipboard-text", codeContent.innerText);
-				elem.insertBefore(copyButton, elem.children[0]);
-			});
-		})
-	})();
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
 </script>
 
 
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
 
   
 
-
-  
-
-
-  
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-  
-  <!-- 尾部用户自定义相关内容 -->
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
