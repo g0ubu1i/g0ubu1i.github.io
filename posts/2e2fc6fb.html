@@ -1,75 +1,35 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css" rel="stylesheet">
-<title>g0ubu1i的博客</title>
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="g0ubu1i">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="description" content="常见工具CyberChef地址：https:&#x2F;&#x2F;github.com&#x2F;gchq&#x2F;CyberChef 随波逐流 CTF编码工具地址：http:&#x2F;&#x2F;1o1o.xyz&#x2F; 编码ascii码 ASCII（发音：，American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统。它主要用于显示现代英语，而其扩展版本延伸">
-<meta property="og:type" content="article">
-<meta property="og:title" content="编码与古典密码">
-<meta property="og:url" content="http://blog.g0ubu1i.online/posts/2e2fc6fb.html">
-<meta property="og:site_name" content="g0ubu1i的博客">
-<meta property="og:description" content="常见工具CyberChef地址：https:&#x2F;&#x2F;github.com&#x2F;gchq&#x2F;CyberChef 随波逐流 CTF编码工具地址：http:&#x2F;&#x2F;1o1o.xyz&#x2F; 编码ascii码 ASCII（发音：，American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统。它主要用于显示现代英语，而其扩展版本延伸">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722522247354-3d65e5a3-c6b4-4603-be4f-d5f73ca3f762.png#averageHue=%23f9f3e2&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=741&amp;id=u7f0ee5cd&amp;originHeight=1334&amp;originWidth=2554&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=119271&amp;status=done&amp;style=none&amp;taskId=u12e618c1-a8b9-418a-8094-710f8d5e786&amp;title=&amp;width=1418.8888325073124">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722522412728-df4899b5-518e-43d5-b68a-1ca19ed3fdd5.png#averageHue=%23fbfafa&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=722&amp;id=u18d2d153&amp;originHeight=1300&amp;originWidth=1217&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=125887&amp;status=done&amp;style=none&amp;taskId=u3960818d-175a-4873-b1e2-1be7df74b1d&amp;title=&amp;width=676.1110842448704">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722526340027-cd8821df-b1ba-4c59-b8fb-cf9b08f40512.png#averageHue=%23fbeeee&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=81&amp;id=u5f44563c&amp;originHeight=145&amp;originWidth=1039&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=11083&amp;status=done&amp;style=none&amp;taskId=ubf4a6190-9123-4ffc-90d0-82c2ad5a96b&amp;title=&amp;width=577.2221992854728">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722526996879-0e819f43-7211-4930-b395-650d066cd3f6.png#averageHue=%23fbf1f0&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=192&amp;id=u506569be&amp;originHeight=345&amp;originWidth=1039&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=23031&amp;status=done&amp;style=none&amp;taskId=ud0af45d2-1650-4b19-bcbf-3029314946b&amp;title=&amp;width=577.2221992854728">
-<meta property="article:published_time" content="2024-08-01T16:04:57.000Z">
-<meta property="article:modified_time" content="2024-08-01T16:08:50.802Z">
-<meta property="article:author" content="g0ubu1i">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722522247354-3d65e5a3-c6b4-4603-be4f-d5f73ca3f762.png#averageHue=%23f9f3e2&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=741&amp;id=u7f0ee5cd&amp;originHeight=1334&amp;originWidth=2554&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=119271&amp;status=done&amp;style=none&amp;taskId=u12e618c1-a8b9-418a-8094-710f8d5e786&amp;title=&amp;width=1418.8888325073124">
-<link rel="shortcut icon" href="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&spec=640&img_type=jpg#">
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>编码与古典密码 - g0ubu1i的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="常见工具CyberChef地址：https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;gchq&amp;#x2F;CyberChef 随波逐流 CTF编码工具地址：http:&amp;#x2F;&amp;#x2F;1o1o.xyz&amp;#x2F; 编码ascii码 ASCII（发音：，American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统。它主要用于显示现代英语，而其扩展版本延伸"><meta property="og:type" content="article"><meta property="og:title" content="编码与古典密码"><meta property="og:url" content="http://blog.g0ubu1i.online/posts/2e2fc6fb.html"><meta property="og:site_name" content="g0ubu1i的博客"><meta property="og:description" content="常见工具CyberChef地址：https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;gchq&amp;#x2F;CyberChef 随波逐流 CTF编码工具地址：http:&amp;#x2F;&amp;#x2F;1o1o.xyz&amp;#x2F; 编码ascii码 ASCII（发音：，American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统。它主要用于显示现代英语，而其扩展版本延伸"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://img.goubuli.online/blog/20240802000807.png"><meta property="article:published_time" content="2024-08-01T16:04:57.000Z"><meta property="article:modified_time" content="2024-08-01T16:08:50.802Z"><meta property="article:author" content="g0ubu1i"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://img.goubuli.online/blog/20240802000807.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.g0ubu1i.online/posts/2e2fc6fb.html"},"headline":"编码与古典密码","image":["http://img.goubuli.online/blog/20240802000807.png"],"datePublished":"2024-08-01T16:04:57.000Z","dateModified":"2024-08-01T16:08:50.802Z","author":{"@type":"Person","name":"g0ubu1i"},"publisher":{"@type":"Organization","name":"g0ubu1i的博客","logo":{"@type":"ImageObject"}},"description":"常见工具CyberChef地址：https:&#x2F;&#x2F;github.com&#x2F;gchq&#x2F;CyberChef 随波逐流 CTF编码工具地址：http:&#x2F;&#x2F;1o1o.xyz&#x2F; 编码ascii码 ASCII（发音：，American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统。它主要用于显示现代英语，而其扩展版本延伸"}</script><link rel="canonical" href="http://blog.g0ubu1i.online/posts/2e2fc6fb.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-<link rel="stylesheet" href="/css/common.css">
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-
-
-
-
-  
-<link rel="stylesheet" href="/css/post.css">
-
-  <link rel="stylesheet" href="/css/highlight-dark.css" media="screen and (prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="/css/highlight-light.css" media="screen and (prefers-color-scheme: light)">
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-    });
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-    <meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
-    <body>
-        <div class="post">
-    <header class="breadcrumb">
-        <a href="/" style="text-decoration: underline; font-style: italic;">Home</a>
-        <span> / </span>
-        <a style="text-decoration: underline; font-style: italic;" href="/posts/2e2fc6fb.html">编码与古典密码</a>
-    </header>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%B7%A5%E5%85%B7"><span class="toc-text">常见工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CyberChef"><span class="toc-text">CyberChef</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%B3%A2%E9%80%90%E6%B5%81-CTF%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7"><span class="toc-text">随波逐流 CTF编码工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E7%A0%81"><span class="toc-text">编码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ascii%E7%A0%81"><span class="toc-text">ascii码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hex"><span class="toc-text">Hex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base64%E7%BC%96%E7%A0%81"><span class="toc-text">base64编码</span></a></li></ol></li></ol>
-    <div class="post-body">
-        <h1 class="post-title">编码与古典密码</h1>
-        <div class="post-meta">
-            2024-7-2
-            <span> · </span>
-            
-        </div>
-        <div class="post-content"><h1 id="常见工具"><a href="#常见工具" class="headerlink" title="常见工具"></a>常见工具</h1><h2 id="CyberChef"><a href="#CyberChef" class="headerlink" title="CyberChef"></a>CyberChef</h2><p>地址：<a target="_blank" rel="noopener" href="https://github.com/gchq/CyberChef">https://github.com/gchq/CyberChef</a><br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722522247354-3d65e5a3-c6b4-4603-be4f-d5f73ca3f762.png#averageHue=%23f9f3e2&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=741&amp;id=u7f0ee5cd&amp;originHeight=1334&amp;originWidth=2554&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=119271&amp;status=done&amp;style=none&amp;taskId=u12e618c1-a8b9-418a-8094-710f8d5e786&amp;title=&amp;width=1418.8888325073124" alt="image.png"></p>
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">g0ubu1i的博客</a></div><div class="navbar-menu"><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="http://img.goubuli.online/blog/20240802000807.png" alt="编码与古典密码"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-08-01T16:04:57.000Z" title="2024/8/2 00:04:57">2024-08-02</time>发表</span><span class="level-item"><time dateTime="2024-08-01T16:08:50.802Z" title="2024/8/2 00:08:50">2024-08-02</time>更新</span></div></div><h1 class="title is-3 is-size-4-mobile">编码与古典密码</h1><div class="content"><h1 id="常见工具"><a href="#常见工具" class="headerlink" title="常见工具"></a>常见工具</h1><h2 id="CyberChef"><a href="#CyberChef" class="headerlink" title="CyberChef"></a>CyberChef</h2><p>地址：<a target="_blank" rel="noopener" href="https://github.com/gchq/CyberChef">https://github.com/gchq/CyberChef</a><br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722522247354-3d65e5a3-c6b4-4603-be4f-d5f73ca3f762.png#averageHue=%23f9f3e2&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=741&amp;id=u7f0ee5cd&amp;originHeight=1334&amp;originWidth=2554&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=119271&amp;status=done&amp;style=none&amp;taskId=u12e618c1-a8b9-418a-8094-710f8d5e786&amp;title=&amp;width=1418.8888325073124" alt="image.png"></p>
 <h2 id="随波逐流-CTF编码工具"><a href="#随波逐流-CTF编码工具" class="headerlink" title="随波逐流 CTF编码工具"></a>随波逐流 CTF编码工具</h2><p>地址：<a target="_blank" rel="noopener" href="http://1o1o.xyz/">http://1o1o.xyz/</a><br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722522412728-df4899b5-518e-43d5-b68a-1ca19ed3fdd5.png#averageHue=%23fbfafa&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=722&amp;id=u18d2d153&amp;originHeight=1300&amp;originWidth=1217&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=125887&amp;status=done&amp;style=none&amp;taskId=u3960818d-175a-4873-b1e2-1be7df74b1d&amp;title=&amp;width=676.1110842448704" alt="image.png"></p>
 <h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><h2 id="ascii码"><a href="#ascii码" class="headerlink" title="ascii码"></a>ascii码</h2><blockquote>
 <p>ASCII（发音：，American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统。它主要用于显示现代英语，而其扩展版本延伸美国标准信息交换码则可以部分支持其他西欧语言，并等同于国际标准ISO/IEC 646。<br>ASCII 由电报码发展而来。第一版标准发布于1963年 ，1967年经历了一次主要修订[5][6]，最后一次更新则是在1986年，至今为止共定义了128个字符；其中33个字符无法显示（一些终端提供了扩展，使得这些字符可显示为诸如笑脸、扑克牌花式等8-bit符号），且这33个字符多数都已是陈废的控制字符。控制字符的用途主要是用来操控已经处理过的文字。在33个字符之外的是95个可显示的字符。用键盘敲下空白键所产生的空白字符也算1个可显示字符（显示为空白）。</p>
@@ -86,33 +46,11 @@
 <p>在使用base64时，需要先定义一串字符串，ABCD……abcd……1234……+/，以上为base64的索引表，在进行编码后也会出现=，==，这是由于补位的需要出现的。<br>原理：<br>1.将待转换的字符每三个字节分为一组，一个字节占8个bit，共有24bit。<br>2.将24个bit每6个分为一组，共4组<br>3.在每组前加两个0，每组由6个bit变为8个bit，共32bit，即4字节<br>4.根据每个字节的10进制数在开头定义的字符串中找对照。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722526340027-cd8821df-b1ba-4c59-b8fb-cf9b08f40512.png#averageHue=%23fbeeee&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=81&amp;id=u5f44563c&amp;originHeight=145&amp;originWidth=1039&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=11083&amp;status=done&amp;style=none&amp;taskId=ubf4a6190-9123-4ffc-90d0-82c2ad5a96b&amp;title=&amp;width=577.2221992854728" alt="image.png"><br>如图，对ABC进行编码时，先将其转为ascii码，分别为65，66，67，再更换为二进制为01000001，01000010，01000011.将其分为4组后在前面加上00，为00010000，00010111，00001001，00000011 。转为索引就是16，20，9，3，在开头的字符串中进行索引得到QUJD。</p>
 <p>以上为满足分为3个字节时，不满足3个字节时<br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1722526996879-0e819f43-7211-4930-b395-650d066cd3f6.png#averageHue=%23fbf1f0&amp;clientId=ue0180b9f-426b-4&amp;from=paste&amp;height=192&amp;id=u506569be&amp;originHeight=345&amp;originWidth=1039&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=23031&amp;status=done&amp;style=none&amp;taskId=ud0af45d2-1650-4b19-bcbf-3029314946b&amp;title=&amp;width=577.2221992854728" alt="image.png"><br>以一个字节为例，当缺少两个字节时，第二组缺少2位，所以对其补上0，会得到2个base编码，而后两组没有数据，所以用=补上，这也就是base64由64个字符组成，最后会出现“=”号的原因。</p>
 <hr>
-</div>
-        <div class="divider"></div>
-        <div class="license">
-    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/" style="text-decoration: none;">
-        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
-    </a>
-    <br/>
-    This work is licensed under a 
-    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-</div>
-    </div>
-    <div id="gitalk-container"></div>
-    <script>
-        const gitalk = new Gitalk({
-          clientID: '',
-          clientSecret: '',
-          repo: '',
-          owner: '',
-          admin: [''],
-          id: location.pathname,
-          distractionFreeMode: false
-        })
-    
-        gitalk.render('gitalk-container')
-    </script>
-</div>
-        <footer class="footer">Powered By <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> With Theme <a target="_blank" rel="noopener" href="https://github.com/EvanLuo42/oliver">Oliver</a></footer>
-        <footer class="footer">copyright</footer>
-    </body>
-</html>
+</div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/e8559c8.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">2024.10.SICTF#Round4-wp</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/3814da5f.html"><span class="level-item">LitCTF2024</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">g0ubu1i的博客</a><p class="is-size-7"><span>&copy; 2025 g0ubu1i</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><!--!--></body></html>

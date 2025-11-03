@@ -1,66 +1,44 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css" rel="stylesheet">
-<title>g0ubu1i的博客</title>
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="g0ubu1i">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta property="og:type" content="website">
-<meta property="og:title" content="g0ubu1i的博客">
-<meta property="og:url" content="http://blog.g0ubu1i.online/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.html">
-<meta property="og:site_name" content="g0ubu1i的博客">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="g0ubu1i">
-<meta name="twitter:card" content="summary">
-<link rel="shortcut icon" href="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&spec=640&img_type=jpg#">
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><title>标签: 网络安全 - g0ubu1i的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="website"><meta property="og:title" content="g0ubu1i的博客"><meta property="og:url" content="http://blog.g0ubu1i.online/"><meta property="og:site_name" content="g0ubu1i的博客"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.g0ubu1i.online/img/og_image.png"><meta property="article:author" content="g0ubu1i"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://blog.g0ubu1i.online/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.g0ubu1i.online"},"headline":"g0ubu1i的博客","image":["http://blog.g0ubu1i.online/img/og_image.png"],"author":{"@type":"Person","name":"g0ubu1i"},"publisher":{"@type":"Organization","name":"g0ubu1i的博客","logo":{"@type":"ImageObject"}},"description":""}</script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-<link rel="stylesheet" href="/css/common.css">
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-
-  
-<link rel="stylesheet" href="/css/tag.css">
-
-
-
-
-
-    <meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
-    <body>
-        <div class="tag">
-    <img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&amp;spec=640&amp;img_type=jpg#"/>
-    <div class="nav-bar">
-    
-        <a class="nav-bar-item-title" href="/">Home</a>
-    
-        <a class="nav-bar-item-title" href="/archives">Archives</a>
-    
-        <a class="nav-bar-item-title" href="/about">About</a>
-    
-</div>
-    <span style="font-size: larger; font-weight: bold; margin-top: 5%;">#网络安全</span>
-    <div class="articles-list">
-    
-        <div class="article-preview">
-            <div class="article-preview-top">
-                <a href="/posts/53a3192e.html" class="article-preview-top-title-link"><span class="article-preview-top-title">BadUSB-树莓派pico</span></a>
-                <span class="article-preview-top-date">2024-0-18</span>
-            </div>
-            <p class="article-preview-content"></p>
-        </div>
-    
-</div>
-    <div class="page-switcher">
-    <a class="page-switcher-number" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">1</a>
-    
-</div>
-</div>
-        <footer class="footer">Powered By <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> With Theme <a target="_blank" rel="noopener" href="https://github.com/EvanLuo42/oliver">Oliver</a></footer>
-        <footer class="footer">copyright</footer>
-    </body>
-</html>
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">g0ubu1i的博客</a></div><div class="navbar-menu"><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">网络安全</a></li></ul></nav></div></div><div class="card"><div class="card-image"><a class="image is-7by3" href="/posts/53a3192e.html"><img class="fill" src="/posts/53a3192e.htmlcover.jpg" alt="BadUSB-树莓派pico"></a></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-01-18T03:05:01.000Z" title="2024/1/18 11:05:01">2024-01-18</time>发表</span><span class="level-item"><time dateTime="2024-06-03T08:22:07.817Z" title="2024/6/3 16:22:07">2024-06-03</time>更新</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/53a3192e.html">BadUSB-树莓派pico</a></p><div class="content"><h1 id="下载固件等"><a href="#下载固件等" class="headerlink" title="下载固件等"></a>下载固件等</h1><p>1.CircuitPython UF2文件<br><a target="_blank" rel="noopener" href="https://circuitpython.org/board/raspberry_pi_pico/">https://circuitpython.org/board/raspberry_pi_pico/</a><br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1705547793064-02a1112b-08c2-4c04-9236-8676f3744e59.png#averageHue=%23c3c2c2&amp;clientId=uc0fcd57a-d58a-4&amp;from=paste&amp;height=631&amp;id=eB0mt&amp;originHeight=1136&amp;originWidth=2380&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=1319889&amp;status=done&amp;style=none&amp;taskId=u3338cb07-cb35-41e2-a330-b0edd9c306a&amp;title=&amp;width=1322.2221696818337" alt="image.png"><br>2.Adafruit_CircuitPython库<br><a target="_blank" rel="noopener" href="https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/latest">https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/latest</a><br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1705547835231-9b11c365-7e85-48ed-b301-81be288e2096.png#averageHue=%23fefbfb&amp;clientId=uc0fcd57a-d58a-4&amp;from=paste&amp;height=349&amp;id=z0bAI&amp;originHeight=629&amp;originWidth=971&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=73980&amp;status=done&amp;style=none&amp;taskId=ub68592d5-4048-4806-8acc-525a5f95142&amp;title=&amp;width=539.444423008849" alt="image.png"><br>3.pico-ducky</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dbisu/pico-ducky">https://github.com/dbisu/pico-ducky</a><a target="_blank" rel="noopener" href="https://pico.org.cn/">h、https://pico.org.cn/</a><br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1705548002763-03a4af53-92ea-43f7-bb7d-fc5f15d1370a.png#averageHue=%23fefcfc&amp;clientId=uc0fcd57a-d58a-4&amp;from=paste&amp;height=704&amp;id=wrcc8&amp;originHeight=1267&amp;originWidth=1659&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=209212&amp;status=done&amp;style=none&amp;taskId=u83ed2410-9431-435b-8fb1-cdadf578d53&amp;title=&amp;width=921.6666300429252" alt="image.png"></p>
+<h1 id="烧录固件，写代码"><a href="#烧录固件，写代码" class="headerlink" title="烧录固件，写代码"></a>烧录固件，写代码</h1><p>按住Pico的BOOTSEL按钮，将Pico插入电脑<br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1705548339694-76ec6625-7309-4800-8a29-b65af1e69e1f.png#averageHue=%23c6eaa6&amp;clientId=uc0fcd57a-d58a-4&amp;from=paste&amp;height=168&amp;id=mLdKW&amp;originHeight=303&amp;originWidth=790&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=26916&amp;status=done&amp;style=none&amp;taskId=u34a48c3a-9b39-496f-906a-93415b6832d&amp;title=&amp;width=438.888871449012" alt="image.png"><br>将.UF2文件放入Pico的文件夹，放入后Pico会断开连接，待固件烧录后重新恢复连接。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1705548484689-fd00bd31-ccc6-40ed-8eb0-6ee572ed85bb.png#averageHue=%23efcd80&amp;clientId=uc0fcd57a-d58a-4&amp;from=paste&amp;height=242&amp;id=Knadz&amp;originHeight=435&amp;originWidth=2005&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=47421&amp;status=done&amp;style=none&amp;taskId=u69da081b-7c1c-4c80-a937-bfd17118cde&amp;title=&amp;width=1113.888844626923" alt="image.png"><br>随后将 adafruit-circuitpython-bundle文件下的lib文件夹中的5个文件复制入Pico的lib文件中<br><img src="https://cdn.nlark.com/yuque/0/2024/png/39265092/1705548688676-fc8701fc-1153-4191-a278-baaf8d37a4c7.png#averageHue=%23fcfbfb&amp;clientId=uc0fcd57a-d58a-4&amp;from=paste&amp;height=192&amp;id=MPbY1&amp;originHeight=345&amp;originWidth=1268&amp;originalType=binary&amp;ratio=1.8000000715255737&amp;rotation=0&amp;showTitle=false&amp;size=25861&amp;status=done&amp;style=none&amp;taskId=u73b98456-57a6-4866-9b80-bb29b6ee300&amp;title=&amp;width=704.4444164523383" alt="image.png"><br>新建code.py文件内容如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> adafruit_hid.keyboard <span class="keyword">import</span> Keyboard</span><br><span class="line"><span class="keyword">from</span> adafruit_hid.keyboard_layout_us <span class="keyword">import</span> KeyboardLayoutUS</span><br><span class="line"><span class="keyword">from</span> adafruit_hid.keycode <span class="keyword">import</span> Keycode</span><br><span class="line"><span class="keyword">import</span> usb_hid</span><br><span class="line"></span><br><span class="line">keyboard = Keyboard(usb_hid.devices)</span><br><span class="line">keyboard_layout = KeyboardLayoutUS(keyboard)</span><br><span class="line">keyboard.press(Keycode.GUI, Keycode.R)</span><br><span class="line">keyboard.release_all()</span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">keyboard_layout.write(<span class="string">&quot;cmd&quot;</span>)</span><br><span class="line">time.sleep(<span class="number">0.5</span>) </span><br><span class="line">keyboard.release_all()</span><br><span class="line">keyboard.press(Keycode.ENTER)</span><br><span class="line">keyboard.release(Keycode.ENTER)</span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">keyboard_layout.write(<span class="string">&quot;start https://www.bilibili.com/video/BV1GJ411x7h7&quot;</span>)</span><br><span class="line">time.sleep(<span class="number">0.5</span>)</span><br><span class="line">keyboard.press(Keycode.ENTER)</span><br><span class="line">keyboard.release(Keycode.ENTER)</span><br></pre></td></tr></table></figure>
+<h1 id="暂未解决"><a href="#暂未解决" class="headerlink" title="暂未解决"></a>暂未解决</h1><p>Pico插入电脑后被识别为U盘，影响使用</p>
+</div></article></div></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">g0ubu1i的博客</a><p class="is-size-7"><span>&copy; 2025 g0ubu1i</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><!--!--></body></html>

@@ -1,104 +1,35 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css" rel="stylesheet">
-<title>g0ubu1i的博客</title>
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="g0ubu1i">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="description" content="SHCTF-&quot;山河&quot;网络安全技能挑战赛 是由齐鲁工业大学、西安邮电大学、广东海洋大学、长春工程学院、郑州轻工业大学、河南大学、齐鲁师范学院、陕西邮电职业技术学院、陕西工业职业技术学院、商丘师范学院、咸阳师范学院 (排名不分先后)等十余所高校共同举办，的「CTF Capture The Flag」新生联赛">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SHCTF2023">
-<meta property="og:url" content="http://blog.g0ubu1i.online/posts/4e08d874.html">
-<meta property="og:site_name" content="g0ubu1i的博客">
-<meta property="og:description" content="SHCTF-&quot;山河&quot;网络安全技能挑战赛 是由齐鲁工业大学、西安邮电大学、广东海洋大学、长春工程学院、郑州轻工业大学、河南大学、齐鲁师范学院、陕西邮电职业技术学院、陕西工业职业技术学院、商丘师范学院、咸阳师范学院 (排名不分先后)等十余所高校共同举办，的「CTF Capture The Flag」新生联赛">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/%E8%AF%B7%E5%AF%B9%E6%88%91%E4%BD%BF%E7%94%A8%E7%A4%BE%E5%B7%A5%E5%90%A7/where.jpg">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/%E8%AF%B7%E5%AF%B9%E6%88%91%E4%BD%BF%E7%94%A8%E7%A4%BE%E5%B7%A5%E5%90%A7/1.jpg">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/%E4%B9%9F%E8%AE%B8%E9%9C%80%E8%A6%81%E4%B8%80%E4%BA%9Bpy/flag.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/ez-misc/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/%E5%A5%87%E6%80%AA%E7%9A%84Screenshot/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/%E8%A1%A8%E9%87%8C%E7%9A%84%E7%A0%81/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/%E5%A5%87%E6%80%AA%E7%9A%84%E6%B4%9B%E7%90%AA%E5%B8%8C/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/%E5%A5%87%E6%80%AA%E7%9A%84%E6%B4%9B%E7%90%AA%E5%B8%8C/result.jpg">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/%E5%9B%BE%E7%89%87%E9%87%8C%E7%9A%84%E7%A7%98%E5%AF%86/zdjd.jpg">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/%E5%9B%BE%E7%89%87%E9%87%8C%E7%9A%84%E7%A7%98%E5%AF%86/zdjd_fft.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/PWN/WEEK1/nc/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/PWN/WEEK1/%E5%8F%A3%E7%AE%97%E9%A2%98/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/babyrce/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/babyrce/2.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/1zzphp/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/ez_serialize/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/ez_serialize/2.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/%E7%99%BB%E5%BD%95%E5%B0%B1%E9%80%81flag/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/%E9%A3%9E%E6%9C%BA%E5%A4%A7%E6%88%98/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/%E9%A3%9E%E6%9C%BA%E5%A4%A7%E6%88%98/2.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/ezphp/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/%E7%94%9F%E6%88%90%E4%BD%A0%E7%9A%84%E9%82%80%E8%AF%B7%E5%87%BD/avator.jpg">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/Easycms/1.png">
-<meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Re/WEEK1/signin/1.png">
-<meta property="article:published_time" content="2023-11-04T07:14:00.000Z">
-<meta property="article:modified_time" content="2024-06-03T08:22:07.823Z">
-<meta property="article:author" content="g0ubu1i">
-<meta property="article:tag" content="CTF">
-<meta property="article:tag" content="SHCTF">
-<meta property="article:tag" content="writeup">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/%E8%AF%B7%E5%AF%B9%E6%88%91%E4%BD%BF%E7%94%A8%E7%A4%BE%E5%B7%A5%E5%90%A7/where.jpg">
-<link rel="shortcut icon" href="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&spec=640&img_type=jpg#">
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>SHCTF2023 - g0ubu1i的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="SHCTF-&amp;quot;山河&amp;quot;网络安全技能挑战赛 是由齐鲁工业大学、西安邮电大学、广东海洋大学、长春工程学院、郑州轻工业大学、河南大学、齐鲁师范学院、陕西邮电职业技术学院、陕西工业职业技术学院、商丘师范学院、咸阳师范学院 (排名不分先后)等十余所高校共同举办，的「CTF Capture The Flag」新生联赛"><meta property="og:type" content="article"><meta property="og:title" content="SHCTF2023"><meta property="og:url" content="http://blog.g0ubu1i.online/posts/4e08d874.html"><meta property="og:site_name" content="g0ubu1i的博客"><meta property="og:description" content="SHCTF-&amp;quot;山河&amp;quot;网络安全技能挑战赛 是由齐鲁工业大学、西安邮电大学、广东海洋大学、长春工程学院、郑州轻工业大学、河南大学、齐鲁师范学院、陕西邮电职业技术学院、陕西工业职业技术学院、商丘师范学院、咸阳师范学院 (排名不分先后)等十余所高校共同举办，的「CTF Capture The Flag」新生联赛"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/请对我使用社工吧/where.jpg"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/请对我使用社工吧/1.jpg"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/也许需要一些py/flag.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/ez-misc/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/奇怪的Screenshot/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/表里的码/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/奇怪的洛琪希/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/奇怪的洛琪希/result.jpg"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/图片里的秘密/zdjd.jpg"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/图片里的秘密/zdjd_fft.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/PWN/WEEK1/nc/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/PWN/WEEK1/口算题/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/babyrce/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/babyrce/2.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/1zzphp/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/ez_serialize/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/ez_serialize/2.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/登录就送flag/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/飞机大战/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/飞机大战/2.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/ezphp/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/生成你的邀请函/avator.jpg"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/Easycms/1.png"><meta property="og:image" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Re/WEEK1/signin/1.png"><meta property="article:published_time" content="2023-11-04T07:14:00.000Z"><meta property="article:modified_time" content="2024-06-03T08:22:07.823Z"><meta property="article:author" content="g0ubu1i"><meta property="article:tag" content="CTF"><meta property="article:tag" content="SHCTF"><meta property="article:tag" content="writeup"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/请对我使用社工吧/where.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.g0ubu1i.online/posts/4e08d874.html"},"headline":"SHCTF2023","image":["http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/请对我使用社工吧/where.jpg","http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/请对我使用社工吧/1.jpg","http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/也许需要一些py/flag.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK1/ez-misc/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/奇怪的Screenshot/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/表里的码/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/奇怪的洛琪希/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/奇怪的洛琪希/result.jpg","http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/图片里的秘密/zdjd.jpg","http://blog.g0ubu1i.online/posts/4e08d874.htm/Misc/WEEK2/图片里的秘密/zdjd_fft.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/PWN/WEEK1/nc/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/PWN/WEEK1/口算题/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/babyrce/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/babyrce/2.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/1zzphp/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/ez_serialize/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/ez_serialize/2.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/登录就送flag/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/飞机大战/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/飞机大战/2.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/ezphp/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/生成你的邀请函/avator.jpg","http://blog.g0ubu1i.online/posts/4e08d874.htm/Web/WEEK1/Easycms/1.png","http://blog.g0ubu1i.online/posts/4e08d874.htm/Re/WEEK1/signin/1.png"],"datePublished":"2023-11-04T07:14:00.000Z","dateModified":"2024-06-03T08:22:07.823Z","author":{"@type":"Person","name":"g0ubu1i"},"publisher":{"@type":"Organization","name":"g0ubu1i的博客","logo":{"@type":"ImageObject"}},"description":"SHCTF-&quot;山河&quot;网络安全技能挑战赛 是由齐鲁工业大学、西安邮电大学、广东海洋大学、长春工程学院、郑州轻工业大学、河南大学、齐鲁师范学院、陕西邮电职业技术学院、陕西工业职业技术学院、商丘师范学院、咸阳师范学院 (排名不分先后)等十余所高校共同举办，的「CTF Capture The Flag」新生联赛"}</script><link rel="canonical" href="http://blog.g0ubu1i.online/posts/4e08d874.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-<link rel="stylesheet" href="/css/common.css">
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-
-
-
-
-  
-<link rel="stylesheet" href="/css/post.css">
-
-  <link rel="stylesheet" href="/css/highlight-dark.css" media="screen and (prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="/css/highlight-light.css" media="screen and (prefers-color-scheme: light)">
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-    });
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-    <meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
-    <body>
-        <div class="post">
-    <header class="breadcrumb">
-        <a href="/" style="text-decoration: underline; font-style: italic;">Home</a>
-        <span> / </span>
-        <a style="text-decoration: underline; font-style: italic;" href="/posts/4e08d874.html">SHCTF2023</a>
-    </header>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SHCTF2023"><span class="toc-text"> SHCTF2023</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto"><span class="toc-text"> Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-Crypto-Checkin"><span class="toc-text">[WEEK1]Crypto_Checkin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E6%AE%8B%E7%BC%BA%E7%9A%84md5"><span class="toc-text">[WEEK1]残缺的md5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E5%87%AF%E6%92%92%E5%A4%A7%E5%B8%9D"><span class="toc-text">[WEEK1]凯撒大帝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E8%BF%9B%E5%88%B6"><span class="toc-text">[WEEK1]进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-okk"><span class="toc-text">[WEEK1]okk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E7%86%8A%E6%96%90%E7%89%B9"><span class="toc-text">[WEEK1]熊斐特</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E8%BF%B7%E9%9B%BE%E9%87%8D%E9%87%8D"><span class="toc-text">[WEEK1]迷雾重重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E9%9A%BE%E8%A8%80%E7%9A%84%E9%81%97%E6%86%BE"><span class="toc-text">[WEEK1]难言的遗憾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E5%B0%8F%E5%85%94%E5%AD%90%E5%8F%AF%E7%88%B1%E6%8D%8F"><span class="toc-text">[WEEK1] 小兔子可爱捏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-what-is-m"><span class="toc-text">[WEEK1] what is m</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E9%BB%91%E6%9A%97%E4%B9%8B%E6%AD%8C"><span class="toc-text">[WEEK1]黑暗之歌</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-really-ez-rsa"><span class="toc-text">[WEEK1] really_ez_rsa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK2-%E5%93%88%E5%B8%8C%E7%8C%AB"><span class="toc-text">[WEEK2] 哈希猫</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Misc"><span class="toc-text">Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E8%AF%B7%E5%AF%B9%E6%88%91%E4%BD%BF%E7%94%A8%E7%A4%BE%E5%B7%A5%E5%90%A7"><span class="toc-text">[WEEK1]请对我使用社工吧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E4%B9%9F%E8%AE%B8%E9%9C%80%E8%A6%81%E4%B8%80%E4%BA%9Bpy"><span class="toc-text">[WEEK1] 也许需要一些py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-ez-misc"><span class="toc-text">[WEEK1] ez-misc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-text">[WEEK1]签到题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-Steganography"><span class="toc-text">[WEEK1]Steganography</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E5%8F%AF%E7%88%B1%E7%9A%84%E6%B4%BE%E8%92%99%E6%8D%8F"><span class="toc-text">[WEEK1] 可爱的派蒙捏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-message"><span class="toc-text">[WEEK1] message</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E7%9C%9F%E7%9A%84%E7%AD%BE%E5%88%B0"><span class="toc-text">[WEEK1]  真的签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E8%BF%9C%E5%9C%A8%E5%A4%A9%E8%BE%B9%E8%BF%91%E5%9C%A8%E7%9C%BC%E5%89%8D"><span class="toc-text">[WEEK1] 远在天边近在眼前</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E5%A5%87%E6%80%AA%E7%9A%84Screenshot"><span class="toc-text">[WEEK1] 奇怪的Screenshot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK2-%E8%A1%A8%E9%87%8C%E7%9A%84%E7%A0%81"><span class="toc-text">[WEEK2] 表里的码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK2-%E5%8F%AF%E7%88%B1%E7%9A%84%E6%B4%9B%E7%90%AA%E5%B8%8C"><span class="toc-text">[WEEK2] 可爱的洛琪希</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK2-%E5%9B%BE%E7%89%87%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-text">[WEEK2]图片的秘密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FINAL-%E9%97%AE%E5%8D%B7"><span class="toc-text">[FINAL]问卷</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PWN"><span class="toc-text"> PWN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-nc"><span class="toc-text">[WEEK1] nc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E5%8F%A3%E7%AE%97%E9%A2%98"><span class="toc-text">[WEEK1] 口算题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-babyrce"><span class="toc-text">[WEEK1] babyrce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-1zzphp"><span class="toc-text">[WEEK1]  1zzphp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-ez-serialize"><span class="toc-text">[WEEK1] ez_serialize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E7%99%BB%E9%99%86%E5%B0%B1%E7%BB%99flag"><span class="toc-text">[WEEK1] 登陆就给flag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E9%A3%9E%E6%9C%BA%E5%A4%A7%E6%88%98"><span class="toc-text">[WEEK1] 飞机大战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-ezphp"><span class="toc-text">[WEEK1] ezphp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-%E7%94%9F%E6%88%90%E4%BD%A0%E7%9A%84%E9%82%80%E8%AF%B7%E5%87%BD"><span class="toc-text">[WEEK1] 生成你的邀请函</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK2-EasyCMS"><span class="toc-text">[WEEK2] EasyCMS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK3-%E5%BF%AB%E9%97%AE%E5%BF%AB%E7%AD%94"><span class="toc-text">[WEEK3] 快问快答</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RE"><span class="toc-text"> RE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK1-signin"><span class="toc-text">[WEEK1]signin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEEK2-pycode"><span class="toc-text">[WEEK2] pycode</span></a></li></ol></li></ol></li></ol>
-    <div class="post-body">
-        <h1 class="post-title">SHCTF2023</h1>
-        <div class="post-meta">
-            2023-10-4
-            <span> · </span>
-            
-                <a href="/tags/CTF">#CTF</a>
-            
-                <a href="/tags/SHCTF">#SHCTF</a>
-            
-                <a href="/tags/writeup">#writeup</a>
-            
-        </div>
-        <div class="post-content"><h1 id="SHCTF2023"><a href="#SHCTF2023" class="headerlink" title=" SHCTF2023"></a><center> SHCTF2023</center></h1><hr>
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">g0ubu1i的博客</a></div><div class="navbar-menu"><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-11-04T07:14:00.000Z" title="2023/11/4 15:14:00">2023-11-04</time>发表</span><span class="level-item"><time dateTime="2024-06-03T08:22:07.823Z" title="2024/6/3 16:22:07">2024-06-03</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Writeup/">Writeup</a></span></div></div><h1 class="title is-3 is-size-4-mobile">SHCTF2023</h1><div class="content"><h1 id="SHCTF2023"><a href="#SHCTF2023" class="headerlink" title=" SHCTF2023"></a><center> SHCTF2023</center></h1><hr>
 <h2 id="Crypto"><a href="#Crypto" class="headerlink" title=" Crypto"></a><center> Crypto</center></h2><h3 id="WEEK1-Crypto-Checkin"><a href="#WEEK1-Crypto-Checkin" class="headerlink" title="[WEEK1]Crypto_Checkin"></a>[WEEK1]Crypto_Checkin</h3><p>下载附件后得到题目</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QZZ|KQbjRRS8QZRQdCYwR4_DoQ7~jyO&gt;0t4R4__aQZQ9|Rz+k_Q!r#mR90+NR4_4NR%&gt;ipO&gt;0s&#123;R90|SQhHKhRz+k^S8Q5JS5|OUQZO&#125;CQfp*dS8P&amp;9R8&gt;k?QZYthRz+k_O&gt;0#&gt;</span><br></pre></td></tr></table></figure>
 <p>使用CyberChef进行解密，发现为4层解密。分别为base85,base64,base32,hex,得到flag</p>
@@ -291,33 +222,11 @@
 <p><img src="/posts/4e08d874.htm/Re/WEEK1/signin/1.png" alt></p>
 <h3 id="WEEK2-pycode"><a href="#WEEK2-pycode" class="headerlink" title="[WEEK2] pycode"></a>[WEEK2] pycode</h3><p>通过题目得到py文件,再编写解密脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">value = <span class="string">&#x27;&#x27;</span></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">obfuscated_output = <span class="string">&#x27;==AeAF3M-tzO-giQ-AUQosDQ9tGK7MDPuhC47tDNB5Tb8Yn4sdW4&#x27;</span></span><br><span class="line">obfuscated_output= obfuscated_output.replace(<span class="string">&#x27;t&#x27;</span>,<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">obfuscated_output = obfuscated_output.replace(<span class="string">&#x27;4&#x27;</span>,<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line">obfuscated_output = obfuscated_output.replace(<span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">output = base64.b64decode(obfuscated_output[::-<span class="number">1</span>]).decode()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(output)):</span><br><span class="line">    temp = output[i]</span><br><span class="line">    temp = <span class="built_in">chr</span>(<span class="built_in">ord</span>(temp) - <span class="number">3</span>)</span><br><span class="line">    value += temp</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(value)):</span><br><span class="line">    temp = value[i]</span><br><span class="line">    temp = <span class="built_in">chr</span>(<span class="built_in">ord</span>(temp) ^ <span class="number">8</span>)</span><br><span class="line">    flag += temp</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
-</div>
-        <div class="divider"></div>
-        <div class="license">
-    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/" style="text-decoration: none;">
-        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
-    </a>
-    <br/>
-    This work is licensed under a 
-    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-</div>
-    </div>
-    <div id="gitalk-container"></div>
-    <script>
-        const gitalk = new Gitalk({
-          clientID: '',
-          clientSecret: '',
-          repo: '',
-          owner: '',
-          admin: [''],
-          id: location.pathname,
-          distractionFreeMode: false
-        })
-    
-        gitalk.render('gitalk-container')
-    </script>
-</div>
-        <footer class="footer">Powered By <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> With Theme <a target="_blank" rel="noopener" href="https://github.com/EvanLuo42/oliver">Oliver</a></footer>
-        <footer class="footer">copyright</footer>
-    </body>
-</html>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/CTF/">CTF</a><a class="link-muted mr-2" rel="tag" href="/tags/SHCTF/">SHCTF</a><a class="link-muted mr-2" rel="tag" href="/tags/writeup/">writeup</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/31ff99f1.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">ISCTF-Crypto-WP</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/b0d6e55d.html"><span class="level-item">NTACTF2023</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">g0ubu1i的博客</a><p class="is-size-7"><span>&copy; 2025 g0ubu1i</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><!--!--></body></html>

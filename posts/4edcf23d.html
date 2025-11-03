@@ -1,70 +1,35 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css" rel="stylesheet">
-<title>g0ubu1i的博客</title>
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="g0ubu1i">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="description" content="2024年11月的ISCTF Crypto方向wp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="2024-11-ISCTF-Crypto-wp">
-<meta property="og:url" content="http://blog.g0ubu1i.online/posts/4edcf23d.html">
-<meta property="og:site_name" content="g0ubu1i的博客">
-<meta property="og:description" content="2024年11月的ISCTF Crypto方向wp">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-15T16:20:45.000Z">
-<meta property="article:modified_time" content="2025-05-27T14:52:46.089Z">
-<meta property="article:author" content="g0ubu1i">
-<meta name="twitter:card" content="summary">
-<link rel="shortcut icon" href="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&spec=640&img_type=jpg#">
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>2024-11-ISCTF-Crypto-wp - g0ubu1i的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="2024年11月的ISCTF Crypto方向wp"><meta property="og:type" content="article"><meta property="og:title" content="2024-11-ISCTF-Crypto-wp"><meta property="og:url" content="http://blog.g0ubu1i.online/posts/4edcf23d.html"><meta property="og:site_name" content="g0ubu1i的博客"><meta property="og:description" content="2024年11月的ISCTF Crypto方向wp"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.g0ubu1i.online/img/og_image.png"><meta property="article:published_time" content="2024-11-15T16:20:45.000Z"><meta property="article:modified_time" content="2025-05-27T14:52:46.089Z"><meta property="article:author" content="g0ubu1i"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://blog.g0ubu1i.online/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.g0ubu1i.online/posts/4edcf23d.html"},"headline":"2024-11-ISCTF-Crypto-wp","image":["http://blog.g0ubu1i.online/img/og_image.png"],"datePublished":"2024-11-15T16:20:45.000Z","dateModified":"2025-05-27T14:52:46.089Z","author":{"@type":"Person","name":"g0ubu1i"},"publisher":{"@type":"Organization","name":"g0ubu1i的博客","logo":{"@type":"ImageObject"}},"description":"2024年11月的ISCTF Crypto方向wp"}</script><link rel="canonical" href="http://blog.g0ubu1i.online/posts/4edcf23d.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-<link rel="stylesheet" href="/css/common.css">
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-
-
-
-
-  
-<link rel="stylesheet" href="/css/post.css">
-
-  <link rel="stylesheet" href="/css/highlight-dark.css" media="screen and (prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="/css/highlight-light.css" media="screen and (prefers-color-scheme: light)">
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-    });
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-    <meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
-    <body>
-        <div class="post">
-    <header class="breadcrumb">
-        <a href="/" style="text-decoration: underline; font-style: italic;">Home</a>
-        <span> / </span>
-        <a style="text-decoration: underline; font-style: italic;" href="/posts/4edcf23d.html">2024-11-ISCTF-Crypto-wp</a>
-    </header>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Crypto"><span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%92%8C%E5%B0%8F%E8%93%9D%E9%B2%A8%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-text">我和小蓝鲨的秘密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ChaCha20-Poly1305"><span class="toc-text">ChaCha20-Poly1305</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%93%9D%E9%B2%A8%E7%9A%84%E8%B4%B9%E9%A9%AC"><span class="toc-text">蓝鲨的费马</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E8%93%9D%E9%B2%A8%E7%9A%84%E6%95%B0%E5%AD%A6%E9%A2%98"><span class="toc-text">小蓝鲨的数学题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E8%93%9D%E9%B2%A8%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-text">小蓝鲨的密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E8%93%9D%E9%B2%A8%E7%9A%84%E6%96%B9%E7%A8%8B"><span class="toc-text">小蓝鲨的方程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%93%9D%E9%B2%A8%E7%9A%84RSA"><span class="toc-text">蓝鲨的RSA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezmath"><span class="toc-text">ezmath</span></a></li></ol></li></ol>
-    <div class="post-body">
-        <h1 class="post-title">2024-11-ISCTF-Crypto-wp</h1>
-        <div class="post-meta">
-            2024-10-16
-            <span> · </span>
-            
-        </div>
-        <div class="post-content"><h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="我和小蓝鲨的秘密"><a href="#我和小蓝鲨的秘密" class="headerlink" title="我和小蓝鲨的秘密"></a>我和小蓝鲨的秘密</h2><p>简单阅读代码后发现是将原图片每个像素点的r,g,b值进行加密，加密过程中n的值较小，直接分解即可，简单的rsa解密过程，之后将原始图片的r,g,b还原即可</p>
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">g0ubu1i的博客</a></div><div class="navbar-menu"><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-11-15T16:20:45.000Z" title="2024/11/16 00:20:45">2024-11-16</time>发表</span><span class="level-item"><time dateTime="2025-05-27T14:52:46.089Z" title="2025/5/27 22:52:46">2025-05-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Writeup/">Writeup</a></span></div></div><h1 class="title is-3 is-size-4-mobile">2024-11-ISCTF-Crypto-wp</h1><div class="content"><h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="我和小蓝鲨的秘密"><a href="#我和小蓝鲨的秘密" class="headerlink" title="我和小蓝鲨的秘密"></a>我和小蓝鲨的秘密</h2><p>简单阅读代码后发现是将原图片每个像素点的r,g,b值进行加密，加密过程中n的值较小，直接分解即可，简单的rsa解密过程，之后将原始图片的r,g,b还原即可</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">from PIL import Image</span><br><span class="line">import numpy as np</span><br><span class="line">n = <span class="number">29869349657224745144762606999</span></span><br><span class="line">p=<span class="number">160216064374859</span></span><br><span class="line">q=<span class="number">186431677583461</span></span><br><span class="line">e  =<span class="number">65537</span></span><br><span class="line">phi = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">d = inverse(e,phi)</span><br><span class="line">def decry(c):</span><br><span class="line">    m = <span class="built_in">pow</span>(c,d,n)</span><br><span class="line">    <span class="keyword">return</span> m</span><br><span class="line">data = np.load(r<span class="string">&quot;encrypted_image.npy&quot;</span>,allow_pickle=True)</span><br><span class="line">h = <span class="number">2065</span></span><br><span class="line">w = <span class="number">712</span></span><br><span class="line">image = Image.new(<span class="string">&quot;RGB&quot;</span>, (w,h))</span><br><span class="line"><span class="keyword">for</span> i in range(w):</span><br><span class="line">    <span class="keyword">for</span> j in range(h):</span><br><span class="line">        r = decry(data[i, j, <span class="number">0</span>])</span><br><span class="line">        g = decry(data[i, j, <span class="number">1</span>])</span><br><span class="line">        b = decry(data[i, j, <span class="number">2</span>])</span><br><span class="line">        image.putpixel((i, j), (r, g, b))</span><br><span class="line">image.save(<span class="string">&quot;custom_rgb_image.png&quot;</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="ChaCha20-Poly1305"><a href="#ChaCha20-Poly1305" class="headerlink" title="ChaCha20-Poly1305"></a>ChaCha20-Poly1305</h2><p>这道题比较简单，只需要知道crypto库的使用以及能看出key？.txt文件中是base92加密的结果即可</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Cipher import ChaCha20_Poly1305</span><br><span class="line"></span><br><span class="line">key = bytes.fromhex(<span class="string">&quot;173974535637a5ef30a116b03d00bd2fe751951ca3eaa62daec2b8f5ca5b6135&quot;</span>)</span><br><span class="line">Encrypted_Flag = bytes.fromhex(<span class="string">&quot;20408b9fc498063ad53a4abb53633a6a15df0ddaf173012d620fa33001794dbb8c038920273464e13170e26d08923aeb&quot;</span>)</span><br><span class="line">Tag=bytes.fromhex(<span class="string">&quot;70ffcc508bf4519e7616f602123c307b&quot;</span>)</span><br><span class="line">Nonce=bytes.fromhex(<span class="string">&quot;d8ebeedec812a6d71240cc50&quot;</span>)</span><br><span class="line"></span><br><span class="line">cipher = ChaCha20_Poly1305.new(key=key, nonce=Nonce)</span><br><span class="line">flag = cipher.decrypt_and_verify(Encrypted_Flag, Tag)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
@@ -142,33 +107,11 @@ f&g
 <h2 id="ezmath"><a href="#ezmath" class="headerlink" title="ezmath"></a>ezmath</h2><p>根据题目给出的代码，是需要计算gamma函数当x取值为5/2时，使用在线计算器计算出的结果不是需要的key，但是应该差别不大，所以我们进行一个爆破</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">key = <span class="number">3293403881791372</span></span><br><span class="line">ke1 = <span class="number">3293403881738537</span></span><br><span class="line">ke2 = <span class="number">3293403881791370</span></span><br><span class="line">s = b<span class="string">&quot;n2SQK64JMsXstCtZurBiz81pMr3ZmgMjhuyL67hssm3shqJGYGfS/mWubINeE5HZ&quot;</span></span><br><span class="line">import random</span><br><span class="line"><span class="keyword">from</span> hashlib import md5</span><br><span class="line">import base64</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher import AES</span><br><span class="line">import tqdm</span><br><span class="line"></span><br><span class="line">def <span class="title function_ invoke__">pad</span>(data):</span><br><span class="line">    data = data.<span class="title function_ invoke__">encode</span>(<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="title function_ invoke__">len</span>(data) % <span class="number">16</span> != <span class="number">0</span>:</span><br><span class="line">        data += b<span class="string">&#x27;\x00&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line">def <span class="title function_ invoke__">decode</span>(key, enc_data):</span><br><span class="line">    mode = AES.MODE_ECB</span><br><span class="line">    aes = AES.<span class="keyword">new</span>(<span class="title function_ invoke__">pad</span>(key), mode)</span><br><span class="line">    enc_data = base64.<span class="title function_ invoke__">decodebytes</span>(enc_data)</span><br><span class="line">    decrypted_data = aes.<span class="title function_ invoke__">decrypt</span>(enc_data)</span><br><span class="line">    <span class="keyword">return</span> decrypted_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> key in tqdm.<span class="title function_ invoke__">trange</span>(<span class="number">329340360000000</span>,<span class="number">329340399999999</span>):</span><br><span class="line">    key1 = key</span><br><span class="line">    random.<span class="title function_ invoke__">seed</span>(key1)</span><br><span class="line">    new_key = <span class="title function_ invoke__">md5</span>(<span class="title function_ invoke__">str</span>(random.<span class="title function_ invoke__">getrandbits</span>(<span class="number">256</span>)).<span class="title function_ invoke__">encode</span>(<span class="string">&#x27;utf-8&#x27;</span>)).<span class="title function_ invoke__">hexdigest</span>()</span><br><span class="line">    en_m = <span class="title function_ invoke__">decode</span>(new_key, s)</span><br><span class="line">    <span class="keyword">if</span> b<span class="string">&#x27;ISCTF&#x27;</span> in en_m:</span><br><span class="line">        <span class="keyword">print</span>(en_m)</span><br><span class="line">        <span class="keyword">print</span>(new_key)</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 <p>最后根据提示发现应该是修改好代码后计算出来的key取前15位</p>
-</div>
-        <div class="divider"></div>
-        <div class="license">
-    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/" style="text-decoration: none;">
-        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
-    </a>
-    <br/>
-    This work is licensed under a 
-    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-</div>
-    </div>
-    <div id="gitalk-container"></div>
-    <script>
-        const gitalk = new Gitalk({
-          clientID: '',
-          clientSecret: '',
-          repo: '',
-          owner: '',
-          admin: [''],
-          id: location.pathname,
-          distractionFreeMode: false
-        })
-    
-        gitalk.render('gitalk-container')
-    </script>
-</div>
-        <footer class="footer">Powered By <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> With Theme <a target="_blank" rel="noopener" href="https://github.com/EvanLuo42/oliver">Oliver</a></footer>
-        <footer class="footer">copyright</footer>
-    </body>
-</html>
+</div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/244cb481.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">信息搜集的艺术</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/a9fc6368.html"><span class="level-item">数论-快速幂运算</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">g0ubu1i的博客</a><p class="is-size-7"><span>&copy; 2025 g0ubu1i</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><!--!--></body></html>

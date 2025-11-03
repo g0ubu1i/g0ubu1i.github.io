@@ -1,105 +1,46 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css" rel="stylesheet">
-<title>g0ubu1i的博客</title>
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="g0ubu1i">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="description" content="如何使用坚果云结合Obsidian的Remotely Save插件，实现笔记的云端同步">
-<meta property="og:type" content="article">
-<meta property="og:title" content="obsidian搭配坚果云实现知识库备份同步">
-<meta property="og:url" content="http://blog.g0ubu1i.online/posts/13b80eda.html">
-<meta property="og:site_name" content="g0ubu1i的博客">
-<meta property="og:description" content="如何使用坚果云结合Obsidian的Remotely Save插件，实现笔记的云端同步">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://img.goubuli.online/blog/20250602222254.png">
-<meta property="article:published_time" content="2025-06-02T14:16:24.000Z">
-<meta property="article:modified_time" content="2025-06-02T14:43:25.042Z">
-<meta property="article:author" content="g0ubu1i">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://img.goubuli.online/blog/20250602222254.png">
-<link rel="shortcut icon" href="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&spec=640&img_type=jpg#">
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>obsidian搭配坚果云实现知识库备份同步 - g0ubu1i的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="如何使用坚果云结合Obsidian的Remotely Save插件，实现笔记的云端同步"><meta property="og:type" content="article"><meta property="og:title" content="obsidian搭配坚果云实现知识库备份同步"><meta property="og:url" content="http://blog.g0ubu1i.online/posts/13b80eda.html"><meta property="og:site_name" content="g0ubu1i的博客"><meta property="og:description" content="如何使用坚果云结合Obsidian的Remotely Save插件，实现笔记的云端同步"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://img.goubuli.online/blog/20250602222254.png"><meta property="article:published_time" content="2025-06-02T14:16:24.000Z"><meta property="article:modified_time" content="2025-06-02T14:43:25.042Z"><meta property="article:author" content="g0ubu1i"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://img.goubuli.online/blog/20250602222254.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.g0ubu1i.online/posts/13b80eda.html"},"headline":"obsidian搭配坚果云实现知识库备份同步","image":["http://img.goubuli.online/blog/20250602222254.png"],"datePublished":"2025-06-02T14:16:24.000Z","dateModified":"2025-06-02T14:43:25.042Z","author":{"@type":"Person","name":"g0ubu1i"},"publisher":{"@type":"Organization","name":"g0ubu1i的博客","logo":{"@type":"ImageObject"}},"description":"如何使用坚果云结合Obsidian的Remotely Save插件，实现笔记的云端同步"}</script><link rel="canonical" href="http://blog.g0ubu1i.online/posts/13b80eda.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-<link rel="stylesheet" href="/css/common.css">
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-
-
-
-
-  
-<link rel="stylesheet" href="/css/post.css">
-
-  <link rel="stylesheet" href="/css/highlight-dark.css" media="screen and (prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="/css/highlight-light.css" media="screen and (prefers-color-scheme: light)">
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-    });
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-    <meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
-    <body>
-        <div class="post">
-    <header class="breadcrumb">
-        <a href="/" style="text-decoration: underline; font-style: italic;">Home</a>
-        <span> / </span>
-        <a style="text-decoration: underline; font-style: italic;" href="/posts/13b80eda.html">obsidian搭配坚果云实现知识库备份同步</a>
-    </header>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="toc-text">准备阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#obsidian%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-text">obsidian插件下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9D%9A%E6%9E%9C%E4%BA%91%E8%AE%BE%E7%BD%AE"><span class="toc-text">坚果云设置</span></a></li></ol>
-    <div class="post-body">
-        <h1 class="post-title">obsidian搭配坚果云实现知识库备份同步</h1>
-        <div class="post-meta">
-            2025-5-2
-            <span> · </span>
-            
-        </div>
-        <div class="post-content"><h1 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h1><p>准备好坚果云账户以及下载好obsidian</p>
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">g0ubu1i的博客</a></div><div class="navbar-menu"><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-06-02T14:16:24.000Z" title="2025/6/2 22:16:24">2025-06-02</time>发表</span><span class="level-item"><time dateTime="2025-06-02T14:43:25.042Z" title="2025/6/2 22:43:25">2025-06-02</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div></div><h1 class="title is-3 is-size-4-mobile">obsidian搭配坚果云实现知识库备份同步</h1><div class="content"><h1 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h1><p>准备好坚果云账户以及下载好obsidian</p>
 <p>坚果云网站：<a target="_blank" rel="noopener" href="https://www.jianguoyun.com/">https://www.jianguoyun.com/</a></p>
 <p>obsidian：<a target="_blank" rel="noopener" href="https://obsidian.md/">https://obsidian.md/</a></p>
 <h1 id="obsidian插件下载"><a href="#obsidian插件下载" class="headerlink" title="obsidian插件下载"></a>obsidian插件下载</h1><p>在obsidian设置中，找到第三方插件，下载remotely save</p>
 <p><img src="http://img.goubuli.online/blog/20250602222254.png" alt="image-20250602222245470"></p>
 <h1 id="坚果云设置"><a href="#坚果云设置" class="headerlink" title="坚果云设置"></a>坚果云设置</h1><p>在账号信息-&gt;安全选项中选择添加应用，设置好名称后，牢记接下来的密码</p>
 <p>随后在obsidian的remotely save中选择远程服务为webdav，服务器地址等信息按照坚果云上的信息填写</p>
-</div>
-        <div class="divider"></div>
-        <div class="license">
-    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/" style="text-decoration: none;">
-        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
-    </a>
-    <br/>
-    This work is licensed under a 
-    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-</div>
-    </div>
-    <div id="gitalk-container"></div>
-    <script>
-        const gitalk = new Gitalk({
-          clientID: '',
-          clientSecret: '',
-          repo: '',
-          owner: '',
-          admin: [''],
-          id: location.pathname,
-          distractionFreeMode: false
-        })
-    
-        gitalk.render('gitalk-container')
-    </script>
-</div>
-        <footer class="footer">Powered By <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> With Theme <a target="_blank" rel="noopener" href="https://github.com/EvanLuo42/oliver">Oliver</a></footer>
-        <footer class="footer">copyright</footer>
-    </body>
-</html>
+</div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/9c5c8488.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">2025.11.数证杯</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/baebdd08.html"><span class="level-item">2025.03.wolvctf-wp</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">g0ubu1i的博客</a><p class="is-size-7"><span>&copy; 2025 g0ubu1i</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><!--!--></body></html>

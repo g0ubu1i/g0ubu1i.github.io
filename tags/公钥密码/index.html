@@ -1,66 +1,76 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css" rel="stylesheet">
-<title>g0ubu1i的博客</title>
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="g0ubu1i">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta property="og:type" content="website">
-<meta property="og:title" content="g0ubu1i的博客">
-<meta property="og:url" content="http://blog.g0ubu1i.online/tags/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/index.html">
-<meta property="og:site_name" content="g0ubu1i的博客">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="g0ubu1i">
-<meta name="twitter:card" content="summary">
-<link rel="shortcut icon" href="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&spec=640&img_type=jpg#">
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><title>标签: 公钥密码 - g0ubu1i的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="website"><meta property="og:title" content="g0ubu1i的博客"><meta property="og:url" content="http://blog.g0ubu1i.online/"><meta property="og:site_name" content="g0ubu1i的博客"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.g0ubu1i.online/img/og_image.png"><meta property="article:author" content="g0ubu1i"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://blog.g0ubu1i.online/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.g0ubu1i.online"},"headline":"g0ubu1i的博客","image":["http://blog.g0ubu1i.online/img/og_image.png"],"author":{"@type":"Person","name":"g0ubu1i"},"publisher":{"@type":"Organization","name":"g0ubu1i的博客","logo":{"@type":"ImageObject"}},"description":""}</script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-<link rel="stylesheet" href="/css/common.css">
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-
-  
-<link rel="stylesheet" href="/css/tag.css">
-
-
-
-
-
-    <meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
-    <body>
-        <div class="tag">
-    <img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&amp;spec=640&amp;img_type=jpg#"/>
-    <div class="nav-bar">
-    
-        <a class="nav-bar-item-title" href="/">Home</a>
-    
-        <a class="nav-bar-item-title" href="/archives">Archives</a>
-    
-        <a class="nav-bar-item-title" href="/about">About</a>
-    
-</div>
-    <span style="font-size: larger; font-weight: bold; margin-top: 5%;">#公钥密码</span>
-    <div class="articles-list">
-    
-        <div class="article-preview">
-            <div class="article-preview-top">
-                <a href="/posts/f97bfe36.html" class="article-preview-top-title-link"><span class="article-preview-top-title">纠错码理论及基于纠错码的公钥密码体制</span></a>
-                <span class="article-preview-top-date">2024-3-7</span>
-            </div>
-            <p class="article-preview-content"></p>
-        </div>
-    
-</div>
-    <div class="page-switcher">
-    <a class="page-switcher-number" href="/tags/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/">1</a>
-    
-</div>
-</div>
-        <footer class="footer">Powered By <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> With Theme <a target="_blank" rel="noopener" href="https://github.com/EvanLuo42/oliver">Oliver</a></footer>
-        <footer class="footer">copyright</footer>
-    </body>
-</html>
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">g0ubu1i的博客</a></div><div class="navbar-menu"><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">公钥密码</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-04-07T10:42:46.000Z" title="2024/4/7 18:42:46">2024-04-07</time>发表</span><span class="level-item"><time dateTime="2024-06-03T08:22:07.827Z" title="2024/6/3 16:22:07">2024-06-03</time>更新</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/f97bfe36.html">纠错码理论及基于纠错码的公钥密码体制</a></p><div class="content"><h1 id="纠错码理论"><a href="#纠错码理论" class="headerlink" title="纠错码理论"></a>纠错码理论</h1><p>​        <em>纠错码一开始应用于数字通信系统，目的是使消息可以在信道中可靠的传输而不产生错误，其通过在消息中增加冗余的方法，排除噪声信道下带来的干扰，从而使接收方能够正确的检测或纠正错误</em></p>
+<p><img src="http://img.goubuli.online/blog/20240407195206.png" alt="image-20240407195159132"></p>
+<h2 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h2><ul>
+<li>线性分组码</li>
+<li>线性卷积码</li>
+<li>非线性卷积码等</li>
+</ul>
+<p>密码学中常用线性分组码</p>
+<h2 id="定义1（线性分组码）："><a href="#定义1（线性分组码）：" class="headerlink" title="定义1（线性分组码）："></a>定义1（线性分组码）：</h2><p>二进制(n, k)线性分组码 C 是 GF(2)上的 n 维线性空间的一个 k 维子空间。n 表示码字的长度，k 表示消息位的长度。</p>
+<h2 id="定义2-（生成矩阵，校验矩阵）"><a href="#定义2-（生成矩阵，校验矩阵）" class="headerlink" title="定义2 （生成矩阵，校验矩阵）:"></a>定义2 （生成矩阵，校验矩阵）:</h2><p>对于(n, k)线性分组码 C，对于(n, k)线性分组码 C，若矩阵$G \in F_2^{k \times n}$满足</p>
+<script type="math/tex; mode=display">
+C = \{mG|m \in F_2^k\}</script><p>称矩阵G为码C的生成矩阵。</p>
+<p>可见，码字空间是矩阵G的行的线性组合张成的子空间，对G做初等变换有$G=[I_kP]$,$I_k$是k阶的单位阵，P是大小为$k\times (n-k)$的矩阵，由该G生成的码称为系统码，且系统码的前k位是信息位，后$(n-k)$位是校验位。</p>
+<p>若矩阵$H \in F_2^{(n-k)\times n}$满足</p>
+<script type="math/tex; mode=display">
+C= \{c\in F_2^n|Hc^T=0\}</script><p>称矩阵H为码C的校验矩阵</p>
+<h2 id="定义3-（校验子）："><a href="#定义3-（校验子）：" class="headerlink" title="定义3 （校验子）："></a>定义3 （校验子）：</h2><p>设向量$c\in F_2^n$,校验矩阵$H\in F_2^{(n-k)\times n}$。若向量$s\in F_2^{n-k}$有</p>
+<script type="math/tex; mode=display">
+s^T = Hc^T\in F_2^{n-k}</script><p>称s为向量c的校验子。当码字正确是，校验子为0向量。</p>
+<h2 id="定义4-（汉明重量）："><a href="#定义4-（汉明重量）：" class="headerlink" title="定义4 （汉明重量）："></a>定义4 （汉明重量）：</h2><p>设向量$c\in F_2^{n}$,汉明重量指向量中非0元素的个数，记作$w(c)$</p>
+<h2 id="定义5-（汉明距离）："><a href="#定义5-（汉明距离）：" class="headerlink" title="定义5 （汉明距离）："></a>定义5 （汉明距离）：</h2><p>设向量$a,b \in F_2^n$,汉明距离指对应位置不同元素的个数，记作$d(a,b)=w(a-b)$</p>
+<h2 id="定义6-（最小距离）："><a href="#定义6-（最小距离）：" class="headerlink" title="定义6 （最小距离）："></a>定义6 （最小距离）：</h2><p>设线性分段码C，$\forall c<em>1,c_2\in C$且$c_1 \neq c_2$，最小距离记作$d</em>{min}= min\ d(c<em>1,c_2)$。其等价于线性分组码C中非零码字的最小汉明重量，即$c\in C,c\neq0,d</em>{min} = min\  w(c)$。</p>
+<p>若一个(n,k)线性分组码的最小距离为$d_{min}$，则</p>
+<ol>
+<li><p>检测出e个随机错误，需满足$d_{min}\ge e+1$</p>
+</li>
+<li><p>纠正出t个随机错误，需满足$d_{min} \ge 2t +1$</p>
+</li>
+<li><p>纠正出t个随机错误，且检测出e个随机错误，其中$e \ge t$，需满足$d_{min} \ge e+t+1$</p>
+</li>
+</ol>
+<p>下文将以(n,k,d)表示线性分组码，其中d表示$d_{min}$</p>
+<h2 id="定义7-（等价类）："><a href="#定义7-（等价类）：" class="headerlink" title="定义7 （等价类）："></a>定义7 （等价类）：</h2><p>设(n,k,d)线性分组码$C_1$和$C_2$，置换$C_1$中的n个码元位置并加一个不变的n维向量a后能够得到$C_2$，称$C_1$与$C_2$属于一个等价类。即</p>
+<script type="math/tex; mode=display">
+C_2 \in \{ \pi(u)+a,u\in C_1\}</script><p>对$C_1$和$C_2$而言，判断二者是否为同一等价类等价于寻找k阶满秩方阵S和n阶置换矩阵P，使得$C_1$的生成矩阵$G_1$和$C_2$的生成矩阵$G_2$满足</p>
+<script type="math/tex; mode=display">
+G_1 = SG_2P</script><p> 若满足上式，则代表$C_1$与$C_2$等价。</p>
+</div></article></div></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">g0ubu1i的博客</a><p class="is-size-7"><span>&copy; 2025 g0ubu1i</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><!--!--></body></html>
