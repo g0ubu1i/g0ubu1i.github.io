@@ -1,49 +1,43 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>信息搜集的艺术 - g0ubu1i的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="资产搜集icp备案天眼查：https:&amp;#x2F;&amp;#x2F;www.tianyancha.com&amp;#x2F;ICP备案查询网：http:&amp;#x2F;&amp;#x2F;www.beianbeian.com&amp;#x2F;国家企业信用信息公示系统：http:&amp;#x2F;&amp;#x2F;www.gsxt.gov.cn&amp;#x2F;index.html爱站的备案查询：https:&amp;#x2F;&amp;#x2F;icp.aizhan.com备案历史：https:&amp;#x2F;&amp;#x2F;icplishi.com&amp;#x2F; icpsearch工具地址https:&amp;#x2F;&amp;#x2F;g"><meta property="og:type" content="article"><meta property="og:title" content="信息搜集的艺术"><meta property="og:url" content="http://blog.g0ubu1i.online/posts/244cb481.html"><meta property="og:site_name" content="g0ubu1i的博客"><meta property="og:description" content="资产搜集icp备案天眼查：https:&amp;#x2F;&amp;#x2F;www.tianyancha.com&amp;#x2F;ICP备案查询网：http:&amp;#x2F;&amp;#x2F;www.beianbeian.com&amp;#x2F;国家企业信用信息公示系统：http:&amp;#x2F;&amp;#x2F;www.gsxt.gov.cn&amp;#x2F;index.html爱站的备案查询：https:&amp;#x2F;&amp;#x2F;icp.aizhan.com备案历史：https:&amp;#x2F;&amp;#x2F;icplishi.com&amp;#x2F; icpsearch工具地址https:&amp;#x2F;&amp;#x2F;g"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://img.goubuli.online/blog/20250114160038.png"><meta property="article:published_time" content="2025-01-14T07:06:13.000Z"><meta property="article:modified_time" content="2025-05-27T14:53:48.938Z"><meta property="article:author" content="g0ubu1i"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://img.goubuli.online/blog/20250114160038.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.g0ubu1i.online/posts/244cb481.html"},"headline":"信息搜集的艺术","image":["http://img.goubuli.online/blog/20250114160038.png"],"datePublished":"2025-01-14T07:06:13.000Z","dateModified":"2025-05-27T14:53:48.938Z","author":{"@type":"Person","name":"g0ubu1i"},"publisher":{"@type":"Organization","name":"g0ubu1i的博客","logo":{"@type":"ImageObject"}},"description":"资产搜集icp备案天眼查：https:&#x2F;&#x2F;www.tianyancha.com&#x2F;ICP备案查询网：http:&#x2F;&#x2F;www.beianbeian.com&#x2F;国家企业信用信息公示系统：http:&#x2F;&#x2F;www.gsxt.gov.cn&#x2F;index.html爱站的备案查询：https:&#x2F;&#x2F;icp.aizhan.com备案历史：https:&#x2F;&#x2F;icplishi.com&#x2F; icpsearch工具地址https:&#x2F;&#x2F;g"}</script><link rel="canonical" href="http://blog.g0ubu1i.online/posts/244cb481.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
+const { Component } = require('inferno');
+const classname = require('hexo-component-inferno/lib/util/classname');
+const Head = require('./common/head');
+const Navbar = require('./common/navbar');
+const Widgets = require('./common/widgets');
+const Footer = require('./common/footer');
+const Scripts = require('./common/scripts');
+const Search = require('./common/search');
 
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
+module.exports = class extends Component {
+    render() {
+        const { site, config, page, helper, body } = this.props;
 
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
+        const language = page.lang || page.language || config.language;
+        const columnCount = Widgets.getColumnCount(config.widgets, config, page);
 
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">g0ubu1i的博客</a></div><div class="navbar-menu"><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-01-14T07:06:13.000Z" title="2025/1/14 15:06:13">2025-01-14</time>发表</span><span class="level-item"><time dateTime="2025-05-27T14:53:48.938Z" title="2025/5/27 22:53:48">2025-05-27</time>更新</span></div></div><h1 class="title is-3 is-size-4-mobile">信息搜集的艺术</h1><div class="content"><h1 id="资产搜集"><a href="#资产搜集" class="headerlink" title="资产搜集"></a>资产搜集</h1><h2 id="icp备案"><a href="#icp备案" class="headerlink" title="icp备案"></a>icp备案</h2><p>天眼查：<a target="_blank" rel="noopener" href="https://www.tianyancha.com/">https://www.tianyancha.com/</a><br>ICP备案查询网：<a target="_blank" rel="noopener" href="http://www.beianbeian.com/">http://www.beianbeian.com/</a><br>国家企业信用信息公示系统：<a target="_blank" rel="noopener" href="http://www.gsxt.gov.cn/index.html">http://www.gsxt.gov.cn/index.html</a><br>爱站的备案查询：<a target="_blank" rel="noopener" href="https://icp.aizhan.com">https://icp.aizhan.com</a><br>备案历史：<a target="_blank" rel="noopener" href="https://icplishi.com/">https://icplishi.com/</a></p>
-<h3 id="icpsearch"><a href="#icpsearch" class="headerlink" title="icpsearch"></a>icpsearch</h3><h4 id="工具地址"><a href="#工具地址" class="headerlink" title="工具地址"></a>工具地址</h4><p><a target="_blank" rel="noopener" href="https://github.com/A10ha/ICPSearch.git">https://github.com/A10ha/ICPSearch.git</a></p>
-<h4 id="工具用法"><a href="#工具用法" class="headerlink" title="工具用法"></a>工具用法</h4><p>查询单个域名/公司备案信息</p>
-<p><code>ICPSearch.exe -d XXX.com</code></p>
-<p><code>ICPSearch.exe -d XXX公司</code></p>
-<h2 id="子域名搜集"><a href="#子域名搜集" class="headerlink" title="子域名搜集"></a>子域名搜集</h2><h1 id="人员搜集"><a href="#人员搜集" class="headerlink" title="人员搜集"></a>人员搜集</h1><p>大多数人会习惯在社交网站上使用一个用户名，可利用此习惯对特定用户搜集其他社交平台信息</p>
-<p>在国内若掌握其常用手机号码也可通过社交平台可能认识的人搜集</p>
-<h2 id="sherlock"><a href="#sherlock" class="headerlink" title="sherlock"></a>sherlock</h2><h3 id="工具地址-1"><a href="#工具地址-1" class="headerlink" title="工具地址"></a>工具地址</h3><p><a target="_blank" rel="noopener" href="https://github.com/sherlock-project/sherlock">https://github.com/sherlock-project/sherlock</a></p>
-<h3 id="工具用法-1"><a href="#工具用法-1" class="headerlink" title="工具用法"></a>工具用法</h3><p><code>Sherlock test</code></p>
-<p><img src="http://img.goubuli.online/blog/20250114160038.png" alt="image-20250114160031521"></p>
-</div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/baebdd08.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">2025.03.wolvctf-wp</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/4edcf23d.html"><span class="level-item">2024-11-ISCTF-Crypto-wp</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">g0ubu1i的博客</a><p class="is-size-7"><span>&copy; 2025 g0ubu1i</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><!--!--></body></html>
+        return <html lang={language ? language.substr(0, 2) : ''}>
+            <Head site={site} config={config} helper={helper} page={page} />
+            <body class={`is-${columnCount}-column`}>
+                <Navbar config={config} helper={helper} page={page} />
+                <section class="section">
+                    <div class="container">
+                        <div class="columns">
+                            <div class={classname({
+                                column: true,
+                                'order-2': true,
+                                'column-main': true,
+                                'is-12': columnCount === 1,
+                                'is-8-tablet is-8-desktop is-8-widescreen': columnCount === 2,
+                                'is-8-tablet is-8-desktop is-6-widescreen': columnCount === 3
+                            })} dangerouslySetInnerHTML={{ __html: body }}></div>
+                            <Widgets site={site} config={config} helper={helper} page={page} position={'left'} />
+                            <Widgets site={site} config={config} helper={helper} page={page} position={'right'} />
+                        </div>
+                    </div>
+                </section>
+                <Footer config={config} helper={helper} />
+                <Scripts site={site} config={config} helper={helper} page={page} />
+                <Search config={config} helper={helper} />
+            </body>
+        </html>;
+    }
+};

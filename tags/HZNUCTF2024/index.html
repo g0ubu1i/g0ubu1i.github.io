@@ -1,63 +1,43 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><title>标签: HZNUCTF2024 - g0ubu1i的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="g0ubu1i的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="website"><meta property="og:title" content="g0ubu1i的博客"><meta property="og:url" content="http://blog.g0ubu1i.online/"><meta property="og:site_name" content="g0ubu1i的博客"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.g0ubu1i.online/img/og_image.png"><meta property="article:author" content="g0ubu1i"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://blog.g0ubu1i.online/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.g0ubu1i.online"},"headline":"g0ubu1i的博客","image":["http://blog.g0ubu1i.online/img/og_image.png"],"author":{"@type":"Person","name":"g0ubu1i"},"publisher":{"@type":"Organization","name":"g0ubu1i的博客","logo":{"@type":"ImageObject"}},"description":""}</script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
+const { Component } = require('inferno');
+const classname = require('hexo-component-inferno/lib/util/classname');
+const Head = require('./common/head');
+const Navbar = require('./common/navbar');
+const Widgets = require('./common/widgets');
+const Footer = require('./common/footer');
+const Scripts = require('./common/scripts');
+const Search = require('./common/search');
 
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
+module.exports = class extends Component {
+    render() {
+        const { site, config, page, helper, body } = this.props;
 
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
+        const language = page.lang || page.language || config.language;
+        const columnCount = Widgets.getColumnCount(config.widgets, config, page);
 
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">g0ubu1i的博客</a></div><div class="navbar-menu"><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags/">标签</a></li><li class="is-active"><a href="#" aria-current="page">HZNUCTF2024</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-04-14T14:00:01.000Z" title="2024/4/14 22:00:01">2024-04-14</time>发表</span><span class="level-item"><time dateTime="2024-06-03T08:22:07.820Z" title="2024/6/3 16:22:07">2024-06-03</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Writeup/">Writeup</a></span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/256e8762.html">HZNUCTF2024</a></p><div class="content"><h1 id="HZNUCTF2024"><a href="#HZNUCTF2024" class="headerlink" title="HZNUCTF2024"></a>HZNUCTF2024</h1><h2 id="ez-encode"><a href="#ez-encode" class="headerlink" title="ez_encode"></a>ez_encode</h2><p>cyberchef 一把嗦了</p>
-<p><img src="http://img.goubuli.online/blog/20240414204840.png" alt="image-20240414204833256"></p>
-<h2 id="sign-up"><a href="#sign-up" class="headerlink" title="sign-up"></a>sign-up</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">p=getPrime(<span class="number">1024</span>)</span><br><span class="line">q=next_prime(p+(p&gt;&gt;<span class="number">500</span>))</span><br><span class="line"></span><br><span class="line">e=<span class="number">0x10001</span></span><br><span class="line"></span><br><span class="line">n=p*q</span><br><span class="line"></span><br><span class="line">c=<span class="built_in">pow</span>(bytes_to_long(flag),e,n)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;n=&quot;</span>,n)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;c=&quot;</span>,c)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>其中<code>q=next_prime(p+(p&gt;&gt;500))</code>指的是：$ q= [p+\frac{1}{2^{500}}p] +r $</p>
-<p>即   $ q = [(1+\frac{1}{2^{500}}p] +r  $, r是为了将q凑为质数的整数。</p>
-<p>$ \therefore n = p\ast q = [(1+ \frac{1}{2^{500}})p^2]+rp$</p>
-<p>$ \therefore (1+\frac{1}{2^{500}})n = ((1+ \frac{1}{2^{500}})p)^2 + (1+\frac{1}{2^{500}})rp &gt; ((1+\frac{1}{2^{500}})p)^2 ——①$</p>
-<p>$\because q^2 = [(1+\frac{1}{2^{500}})p + r]^2 = ((1+\frac{1}{2^{500}})p)^2 + 2[(1+\frac{1}{2^{500}})rp] + r^2 ——②$</p>
-<p>易知，②式大于①式</p>
-<p>$\therefore 经过比较得 [(1+\frac{1}{2^{500}})p]^2 &lt; [(1+\frac{1}{2^{500}})n]&lt; [(1+\frac{1}{2^{500}})p + r]^2$</p>
-<p>通过开方缩小范围得</p>
-<p>$(1+\frac{1}{2^{500}})p &lt; \sqrt{(1 + \frac{1}{2^{500}})n} &lt; (1+\frac{1}{2^{500}})p +r = q $</p>
-<p>所以，$\sqrt{(1+\frac{1}{2^{500}})n}$的下一个素数即为q</p>
-<p><code>q = next_prime(iroot((n + (n &gt;&gt; 500)), 2)[0])</code></p>
-<h2 id="ez-rsa"><a href="#ez-rsa" class="headerlink" title="ez_rsa"></a>ez_rsa</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">from flag import flag</span><br><span class="line"></span><br><span class="line">def keygen(nbit = 32):</span><br><span class="line">	while True:</span><br><span class="line">		k = getRandomNBitInteger(nbit)</span><br><span class="line">		p = 3*k**17 + 3*k**11 - 53*k**7 + 12*k**5 - 114*k + 27329</span><br><span class="line">		q = 5*k**13 - 7*k**11 + 43*k**5 - 313*k**3 - 14*k + 18869</span><br><span class="line">		if isPrime(p) and isPrime(q):</span><br><span class="line">			return p, q</span><br><span class="line"></span><br><span class="line">def encrypt(msg, n, e = 65537):</span><br><span class="line">	m = bytes_to_long(msg)</span><br><span class="line">	return pow(m, e, n)</span><br><span class="line"></span><br><span class="line">p, q = keygen()</span><br><span class="line">n = p * q</span><br><span class="line">enc = encrypt(flag, n)</span><br><span class="line">print(f&#x27;n = &#123;n&#125;&#x27;)</span><br><span class="line">print(f&#x27;enc = &#123;enc&#125;&#x27;)</span><br></pre></td></tr></table></figure>
-<p>根据题目得到一个关于k的多项式方程组</p>
-<p>用sage求解多项式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var(&#x27;k&#x27;)</span><br><span class="line">p = 3*k**17 + 3*k**11 - 53*k**7 + 12*k**5 - 114*k + 27329</span><br><span class="line">q = 5*k**13 - 7*k**11 + 43*k**5 - 313*k**3 - 14*k + 18869</span><br><span class="line"></span><br><span class="line">eq=p*q==n</span><br><span class="line"></span><br><span class="line">solve(eq,[k])</span><br></pre></td></tr></table></figure>
-<p>即可求得k，再求得p，q解一般rsa即可</p>
-<h2 id="你知道什么叫第二重要极限吗？"><a href="#你知道什么叫第二重要极限吗？" class="headerlink" title="你知道什么叫第二重要极限吗？"></a>你知道什么叫第二重要极限吗？</h2><script type="math/tex; mode=display">
-a = \lim_{x \to 0} (\frac{a_1^x+a_2^x+\cdots+a_n^x}{n})^{\frac{n}{x}}</script><p>你知道什么叫做第二重要极限吗？</p>
-<p>其中</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a_i = [<span class="number">1</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">4</span>]   </span><br><span class="line"></span><br><span class="line">flag=<span class="string">&quot;HZNUCTF&#123;&quot;</span>+md5(res)+<span class="string">&quot;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-<p>使用在线工具求得极限后md5加密即可</p>
-</div></article></div></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">g0ubu1i的博客</a><p class="is-size-7"><span>&copy; 2025 g0ubu1i</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script data-pjax src="/js/column.js"></script><!--!--><script data-pjax src="/js/main.js" defer></script><!--!--></body></html>
+        return <html lang={language ? language.substr(0, 2) : ''}>
+            <Head site={site} config={config} helper={helper} page={page} />
+            <body class={`is-${columnCount}-column`}>
+                <Navbar config={config} helper={helper} page={page} />
+                <section class="section">
+                    <div class="container">
+                        <div class="columns">
+                            <div class={classname({
+                                column: true,
+                                'order-2': true,
+                                'column-main': true,
+                                'is-12': columnCount === 1,
+                                'is-8-tablet is-8-desktop is-8-widescreen': columnCount === 2,
+                                'is-8-tablet is-8-desktop is-6-widescreen': columnCount === 3
+                            })} dangerouslySetInnerHTML={{ __html: body }}></div>
+                            <Widgets site={site} config={config} helper={helper} page={page} position={'left'} />
+                            <Widgets site={site} config={config} helper={helper} page={page} position={'right'} />
+                        </div>
+                    </div>
+                </section>
+                <Footer config={config} helper={helper} />
+                <Scripts site={site} config={config} helper={helper} page={page} />
+                <Search config={config} helper={helper} />
+            </body>
+        </html>;
+    }
+};
