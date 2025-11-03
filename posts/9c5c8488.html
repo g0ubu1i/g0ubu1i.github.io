@@ -1,43 +1,215 @@
-const { Component } = require('inferno');
-const classname = require('hexo-component-inferno/lib/util/classname');
-const Head = require('./common/head');
-const Navbar = require('./common/navbar');
-const Widgets = require('./common/widgets');
-const Footer = require('./common/footer');
-const Scripts = require('./common/scripts');
-const Search = require('./common/search');
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>2025.11.数证杯 - g0ubu1i的博客</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="g0ubu1i&#039;s blog"><meta name="msapplication-TileImage" content="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&amp;spec=640&amp;img_type=jpg"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="g0ubu1i&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="关于第二届数证杯的WP"><meta property="og:type" content="blog"><meta property="og:title" content="2025.11.数证杯"><meta property="og:url" content="http://blog.g0ubu1i.online/posts/9c5c8488.html"><meta property="og:site_name" content="g0ubu1i的博客"><meta property="og:description" content="关于第二届数证杯的WP"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.g0ubu1i.online/img/og_image.png"><meta property="article:published_time" content="2025-11-01T09:02:11.000Z"><meta property="article:modified_time" content="2025-11-03T08:31:14.720Z"><meta property="article:author" content="g0ubu1i"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://blog.g0ubu1i.online/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.g0ubu1i.online/posts/9c5c8488.html"},"headline":"2025.11.数证杯","image":["http://blog.g0ubu1i.online/img/og_image.png"],"datePublished":"2025-11-01T09:02:11.000Z","dateModified":"2025-11-03T08:31:14.720Z","author":{"@type":"Person","name":"g0ubu1i"},"publisher":{"@type":"Organization","name":"g0ubu1i的博客","logo":{"@type":"ImageObject","url":{"text":"g0ubu1i's blog"}}},"description":"关于第二届数证杯的WP"}</script><link rel="canonical" href="http://blog.g0ubu1i.online/posts/9c5c8488.html"><link rel="icon" href="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&amp;spec=640&amp;img_type=jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-module.exports = class extends Component {
-    render() {
-        const { site, config, page, helper, body } = this.props;
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
-        const language = page.lang || page.language || config.language;
-        const columnCount = Widgets.getColumnCount(config.widgets, config, page);
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-        return <html lang={language ? language.substr(0, 2) : ''}>
-            <Head site={site} config={config} helper={helper} page={page} />
-            <body class={`is-${columnCount}-column`}>
-                <Navbar config={config} helper={helper} page={page} />
-                <section class="section">
-                    <div class="container">
-                        <div class="columns">
-                            <div class={classname({
-                                column: true,
-                                'order-2': true,
-                                'column-main': true,
-                                'is-12': columnCount === 1,
-                                'is-8-tablet is-8-desktop is-8-widescreen': columnCount === 2,
-                                'is-8-tablet is-8-desktop is-6-widescreen': columnCount === 3
-                            })} dangerouslySetInnerHTML={{ __html: body }}></div>
-                            <Widgets site={site} config={config} helper={helper} page={page} position={'left'} />
-                            <Widgets site={site} config={config} helper={helper} page={page} position={'right'} />
-                        </div>
-                    </div>
-                </section>
-                <Footer config={config} helper={helper} />
-                <Scripts site={site} config={config} helper={helper} page={page} />
-                <Search config={config} helper={helper} />
-            </body>
-        </html>;
-    }
-};
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">g0ubu1i&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/g0ubu1i"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-11-01T09:02:11.000Z" title="2025/11/1 17:02:11">2025-11-01</time>发表</span><span class="level-item"><time dateTime="2025-11-03T08:31:14.720Z" title="2025/11/3 16:31:14">2025-11-03</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Writeup/">Writeup</a></span><span class="level-item">34 分钟读完 (大约5036个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">2025.11.数证杯</h1><div class="content"><p>容器密码：<code>GQ7aXryvOC*M8qG*eXa19K9*g&amp;jtHS*Gtrimps@Qx*aYt4oRwwK*HeN0A$#EPv*u</code></p>
+<span id="more"></span>
+<h2 id="服务器取证">服务器取证</h2>
+<p>1、node1节点的磁盘设备SHA256值前六位是？(字母全大写，答案格式：AAAAAA)<br>
+2、集群配置了多少个node节点？（答案格式：1）<br>
+3、嫌疑人于什么时间修改master节点的root密码？（使用双位数格式，答案格式：00:00:00）<br>
+4、Docker的安装日期是？（使用双位数格式，答案格式：01月01日）<br>
+5、Docker通过配置守护进程以使用全局代理，该代理地址的端口是？（答案格式：1）<br>
+6、发卡网站使用的Mysql数据库对外访问端口是？（答案格式：1）<br>
+7、发卡网站部署使用的镜像名称是？（答案格式：root/root）<br>
+8、当前Telegram群管机器人使用的容器ID的前六位是？（答案格式：123abc）<br>
+9、发卡网站使用的缓存数据库是？（答案格式：mysql）<br>
+10、集群中配置的发卡网站代码运行所在的物理目录是？（答案格式：/root/root）<br>
+11、Telegram群管机器人配置的API代理域名是？（答案格式：<a target="_blank" rel="noopener" href="http://www.xxx.com">www.xxx.com</a>）<br>
+12、嫌疑人在Telegram上创建的群名称是？（答案格式：比武群）<br>
+13、统计嫌疑人在Telegram上创建的群中2025年6月之后成功入群的人数为？（答案格式：1）<br>
+14、据嫌疑人交代曾在发卡网上删除过一条订单数据，请找出该删除订单的订单号是？（答案格式：请按实际值填写）<br>
+15、发卡网站上2025年6月之后订单交易成功的总金额是？忽略被删除的数据（答案格式：1）<br>
+16、发卡网站的后台访问路径是？（答案格式：/root）<br>
+17、计算出用户密码算法中Salt的值，并进行Base64编码，结果是？（答案格式：请按实际值填写）<br>
+18、发卡网站配置的邮件发送人地址是？（答案格式：abc@abc.com）<br>
+19、当前发卡网站首页仪表盘中显示的发卡网站版本为？（答案格式：1.1.1）<br>
+20、当前发卡网站中绑定的订单推送Telegram用户id为（答案格式：请按实际值填写）</p>
+<h2 id="流量包分析">流量包分析</h2>
+<p>21、黑客攻击的目标路由器SSID为 （答案格式：请按实际值填写）<br>
+22、黑客成功捕获了WIFI中WPA协议握手包，其中有效握手包组数为(完整握手为一组)（答案格式：1）<br>
+23、黑客爆破得出的WiFi密码为（提示：密码由小写英文字母和数字组成）（答案格式：abcd1234）<br>
+24、黑客成功连接Wifi后，发现路由器操作系统为？（答案格式：请按实际值填写）<br>
+25、黑客对路由器后台进行爆破攻击，该路由器后台密码为（答案格式：请按实际值填写）<br>
+26、黑客通过修改路由器设置，将被劫持的域名为（答案格式：<a target="_blank" rel="noopener" href="http://www.xxx.com">www.xxx.com</a>）<br>
+27、黑客在路由器管理后台发现FTP服务配置，FTP登录密码为？（答案格式：请按实际值填写）<br>
+28、黑客通过FTP上传了一个压缩包文件，该文件内容为（答案格式：请按实际值填写）<br>
+29、黑客通过路由器执行shell脚本，反弹shell的监听端口为（答案格式：1）<br>
+30、黑客通过反弹shell成功控制目标路由器后，总共执行了多少条命令（答案格式：1)</p>
+<h2 id="apk程序分析">APK程序分析</h2>
+<p>31、apk 的版本名称为？ （答案格式：1.1.1）<br>
+32、在该APP中，调用了哪个System的方法用于获取本地系统的时间戳？（答案格式：MainActivity）<br>
+33、apk运行后getVer()的返回值是多少？（答案格式：1.0.0）<br>
+34、apk运行后需要通过一个http get请求才能打开第二个界面，给出该请求URL？ （答案格式：<a target="_blank" rel="noopener" href="http://www.xxx.com/test?a=1%EF%BC%89">http://www.xxx.com/test?a=1）</a><br>
+35、apk第二界面的8位授权码是什么？ （答案格式：11111111）</p>
+<h2 id="二进制程序分析">二进制程序分析</h2>
+<p>36、安装该程序后，该恶意程序的可执行文件所在的直接父目录名称是什么为？（答案格式：root）<br>
+37、解密文件名为RnRGaWxlcy5lZGIiL的文件时所使用的key是什么？（答案格式：请按实际值填写）<br>
+38、解密文件RnRGaWxlcy5lZGIiL成功后，请分析并给出解密后的文件的入口点地址？（答案格式：0x180000000）<br>
+39、加密文件名为6c051a72b91a1的文件时所使用的密钥是多少？（答案格式：请按实际值填写）<br>
+40、6c051a72b91a1.1文件解密后的md5值后六位是多少？（字母全大写，答案格式：AAAAAA）</p>
+<h2 id="计算机取证">计算机取证</h2>
+<h3 id="41-操作系统的build版本号是？-答案格式：1">41、操作系统的Build版本号是？（答案格式：1）</h3>
+<p>通过美亚超级取证大师，查看系统信息，答案为19044</p>
+<h3 id="42-操作系统设置的账户密码最长存留期为多少天？-答案格式：1">42、操作系统设置的账户密码最长存留期为多少天？（答案格式：1）</h3>
+<p>查看账户策略中的密码策略，最长留存期为68天</p>
+<h3 id="43-用户2登陆密码nt哈希值后六位是？-字母全大写-答案格式：aaaaaa">43、用户2登陆密码NT哈希值后六位是？（字母全大写，答案格式：AAAAAA）</h3>
+<p>通过用户信息，查看到NT哈希值为<code>d378c73f7c984db6f732499abea9c708</code></p>
+<h3 id="44-蓝牙mac地址是多少？-答案格式：aa-aa-aa-aa-aa-aa">44、蓝牙mac地址是多少？（答案格式：AA-AA-AA-AA-AA-AA）</h3>
+<p>查看网络连接，蓝牙连接的mac地址为<code>9c-b6-d0-04-c9-cc</code></p>
+<h3 id="45-safeimager的产品序列号后四位是？-字母全大写-答案格式：aaaaaa">45、SafeImager的产品序列号后四位是？（字母全大写，答案格式：AAAAAA)</h3>
+<p>仿真之后安装everything，搜索<code>SafeImager</code>,找到路径<code>C:\Users\Administrator\AppData\Roaming\SafeImager</code></p>
+<p>46、123.VHD所处的结束扇区是？（答案格式：1 ）</p>
+<h3 id="47-用户在bitlocker加密分区最后修改的文件是-答案格式：abcd-txt">47、用户在BitLocker加密分区最后修改的文件是?（答案格式：abcd.txt）</h3>
+<p>挂载<code>C:\Users\Administrator\Documents\123.VHD</code>后，在backup文件夹中可以发现bitlocker的恢复密钥<code>625075-617309-532576-720302-040975-309232-451924-426679</code><br>
+解锁D盘后可以按照修改日期排序，看到最后修改的文件为<code>资料1.txt</code></p>
+<h3 id="48-用户连接192-168-114-129时用的会话名称是？-答案格式：按照实际情况填写">48、用户连接192.168.114.129时用的会话名称是？（答案格式：按照实际情况填写）</h3>
+<p>打开Xshell，看到会话名称为<code>连接阿里云</code><br>
+49、用户创建存储虚拟币钱包地址页面的时间是？（使用双位数格式，答案格式：01月01日）<br>
+50、用户的虚拟币钱包地址是？（答案格式：按照实际情况填写）</p>
+<h3 id="51-用户vc加密容器的密码是？-答案格式：按照实际情况填写">51、用户VC加密容器的密码是？（答案格式：按照实际情况填写）</h3>
+<p>打开桌面的foxmail，可以看到SZB出题的邮件，其中有几个压缩包以及解压密码<code>258369</code><br>
+保存1，2，3压缩包后发现依旧缺失文件，使用everything搜索<code>软件</code>后，找到4，5压缩包，成功解压，其中发现联系人.docx，拖到最后发现有白色的文字内容<code>VC密码：SHUZHENGBEIctzy2025</code></p>
+<h3 id="52-用户在生活中使用的代号是？-答案格式：按照实际情况填写">52、用户在生活中使用的代号是？（答案格式：按照实际情况填写）</h3>
+<p>将桌面上的代号.wav拖进Audacity，查看频谱图发现代码<code>小胖</code></p>
+<h3 id="53-李安东的银行卡归属哪个银行？-答案格式：农业银行">53、李安东的银行卡归属哪个银行？（答案格式：农业银行）</h3>
+<p>桌面的公司资料文件夹中有一个<code>银行卡6位纯数字.xlsx</code>文件，是由<code>office2john</code>导出hash后，是由<code>hashcat</code>爆破得到密码为<code>688561</code><br>
+54、请分析某市10月6日最高气温是？（答案格式：1）</p>
+<h3 id="55-用户的bitlocker密码是？-答案格式：按照实际情况填写">55、用户的BitLocker密码是？（答案格式：按照实际情况填写）</h3>
+<p>依据47题目</p>
+<h3 id="56-用户办公室的门禁密码是？-答案格式：按照实际情况填写">56、用户办公室的门禁密码是？（答案格式：按照实际情况填写）</h3>
+<p>我们在51题拿到了vc的密码，而123.VHD文件中有<code>secretNew</code>文件，大小为25600kb。所以使用VC挂载该文件，发现其中有<code>办公室密码锁.jpg.enc</code>。我们在51题的压缩包中得到了<code>DecryptionTool.exe</code>，发现解密后可以得到解密后的图片。用010打开后发现结尾写着<code>147963258</code></p>
+<h3 id="57-用户使用的以d开头的解密程序的md5值后六位是？-字母全大写-答案格式：aaaaaa">57、用户使用的以D开头的解密程序的MD5值后六位是？（字母全大写，答案格式：AAAAAA）</h3>
+<p>计算56题中的exe的md5<br>
+58、木马程序运行至系统断点前加载了几个动态链接库？（答案格式：1）<br>
+59、木马产生的程序名称是什么？（答案格式：abcd.txt）<br>
+60、木马尝试访问的域名是什么？（答案格式：按照实际情况填写）</p>
+<h3 id="61-分析计算机内存检材-此内存镜像制作时的系统时间是？-使用双位数格式-答案格式：01月01日">61、分析计算机内存检材，此内存镜像制作时的系统时间是？（使用双位数格式，答案格式：01月01日）</h3>
+<p>使用vol进行分析<code>python vol.py -f 内存检材.mem windows.info</code><br>
+查看到<code>SystemTime      2025-10-16 11:21:53+00:00</code><br>
+62、分析计算机内存检材，用户Yiyelin的用户表示后4位是？（答案格式：1111）<br>
+63、分析计算机内存检材，计算机的CPU型号是什么？（答案格式： i9-1110U）</p>
+<h3 id="64-分析计算机内存检材-wps-exe的pid是？-答案格式：1">64、分析计算机内存检材，wps.exe的PID是？（答案格式：1）</h3>
+<p>使用vol进行分析 <code>python vol.py -f 内存检材.mem windows.pslist</code><br>
+查看到<code>5888    5876    wps.exe 0xb302c112d800 </code><br>
+65、分析计算机内存检材，此计算机开机自启动的远控软件名称是？（答案格式：abcd.txt）</p>
+<h2 id="物联网设备取证">物联网设备取证</h2>
+<h3 id="66-打印机的主机名称是什么？-答案格式：root">66、打印机的主机名称是什么？(答案格式：root)</h3>
+<p>美亚超级取证大师加载后，查看到主机名为<code>print</code><br>
+67、打印文件存储在哪个目录？(答案格式：/root/root)</p>
+<h3 id="68-同一天-打印两份文件的用户是谁？-答案格式：root">68、同一天，打印两份文件的用户是谁？(答案格式：root)</h3>
+<p>进入终端，在<code>\var\log\cups</code>中可以找到<code>page_log</code>文件，其中记录了alice打印了两次<br>
+69、分析物联网检材，木马运行后，自身产生的进程ID是多少？（答案格式：1）<br>
+70、分析物联网检材，系统中存在一个非标定时任务，这个任务每隔多少分钟执行？（答案格式：1）<br>
+71、分析物联网检材，木马程序会窃取文档暂存在隐藏目录，这个目录的绝对路径？（/root/root/）<br>
+72、分析物联网检材，木马程序将数据上传到的服务器的IP地址是多少？（答案格式：1.1.1.1）<br>
+73、根据木马程序，它监视的关键字是什么？（答案格式：按照实际情况填写）</p>
+<h2 id="移动终端取证">移动终端取证</h2>
+<h3 id="74-分析检材中微信id-wxid-f4s0jmpvrc522对应的手机号后四位为-答案格式：1111">74、分析检材中微信ID:wxid_f4s0jmpvrc522对应的手机号后四位为（答案格式：1111）</h3>
+<p>使用取证大师加载，查看到手机号为<code>17859628390</code></p>
+<h3 id="75-分析检材中-华为应用市场-第一次安装日期为-使用双位数格式-答案格式：01月01日">75、分析检材中“华为应用市场”第一次安装日期为（使用双位数格式，答案格式：01月01日）</h3>
+<p>使用取证大师查看应用使用记录，可以看到安装时间为<code>2025-09-24 19:37:42</code></p>
+<h3 id="76-找出检材中钱包app-请列出该app中eth地址后六位是-字母全大写-答案格式：aaaaaa">76、找出检材中钱包APP，请列出该APP中ETH地址后六位是（字母全大写，答案格式：AAAAAA）</h3>
+<p>取证大师分析到<code>imToken</code>软件，其中ETH的地址为<code>0x304fEd2927f47692E50158A1148a1B65503FE61F</code></p>
+<h3 id="77-分析出检材中包含-南昌西站-的图片-计算该图片的md5后六位？-字母全大写-答案格式：aaaaaa">77、分析出检材中包含“南昌西站”的图片，计算该图片的MD5后六位？（字母全大写，答案格式：AAAAAA）</h3>
+<p>在图片中硬找找到文件<br>
+<code>MD5 的 IMG_0092.JPG.jfif 哈希: </code>25def5e31002f14894adef17d585a51d<code> </code>CertUtil: -hashfile 命令成功完成。`</p>
+<h3 id="78-手机相册中有张-imtoken助记词1-png-图片被破坏-请修复该图片-列出该图片中第三个单词-答案格式：按照实际情况填写">78、手机相册中有张“imtoken助记词1.PNG”图片被破坏，请修复该图片，列出该图片中第三个单词。（答案格式：按照实际情况填写）</h3>
+<p>已经知道了图片的名字，直接拿everything搜，拿到图片后放到<code>PuzzleSolver</code>修复宽高，得到正常的图片。</p>
+<h3 id="79-找出一张png图片-该图片上显示-助记词2-请列出该图片上显示的第二个单词-答案格式：按照实际情况填写">79、找出一张PNG图片，该图片上显示“助记词2”，请列出该图片上显示的第二个单词。（答案格式：按照实际情况填写）</h3>
+<p>在everything直接搜索<code>.png</code>，找到名为<code>imtoken助记词2_2.PNG</code>的图片</p>
+<h3 id="80-找出检材中显示-助记词3-的文档-列出该文档中记录的第三个助记词单词-答案格式：按照实际情况填写">80、找出检材中显示“助记词3”的文档，列出该文档中记录的第三个助记词单词。（答案格式：按照实际情况填写）</h3>
+<p>已经说明是文档，但是搜索docx,doc都没有找到相关的文件，找到一个名为<code>备忘录</code>的无后缀文件。文件头是pk开头，修改后缀名<code>.docx</code>打开后并没有看到助记词，使用010打开文件，发现助记词在末尾<br>
+81、分析出该组助记词正常顺序中最后一个单词（已知助记词1、助记词2、助记词3中的单词顺序有被调整）。（答案格式：按照实际情况填写）<br>
+82、分析出邮箱中收件人QQ号为“850563586”的姓名（答案格式：按照实际情况填写）</p>
+<h3 id="83-得知机主通过某个应用给hhshal发送了一个文档-该应用的数据包名是什么？-答案格式：com-test">83、得知机主通过某个应用给HHshAL发送了一个文档，该应用的数据包名是什么？（答案格式：com.test）</h3>
+<p>通过分析出的包名搜索相关的应用，只有<code>dingtong.saichuang</code>可以进行即时通讯<br>
+84、接上题，该应用聊天记录数据库的打开密码是什么？（答案格式：按照实际情况填写）<br>
+85、接上题，机主发送的这个加密文档，打开密码是什么？（答案格式：按照实际情况填写）<br>
+86、厉明的身份证地址登记的门牌号是多少？？（答案格式：1）<br>
+87、分析出“important1.xlsx”文件中体现的“金达欣”银行卡后六位？（答案格式：111111）<br>
+88、接上题，保存“important1.xlsx”打开密码数据的应用，该应用的启动密码是什么？（答案格式：按照实际情况填写）</p>
+<h2 id="数据分析">数据分析</h2>
+<p>90、通过对检材“01-lott.sql”文件进行分析，统计t_trade_betrecord中庄家&quot;188&quot;记录中彩票类型为&quot;jnd28&quot;且期号在t_lottery_jnd表中存在的记录数。（答案格式：1）<br>
+91、通过对检材“01-lott.sql”文件进行分析，统计庄家&quot;188&quot;的玩家在2021-05-10当日：电子投注内容出现频率最高的电子投注内容是什么？（答案格式：按照实际情况填写）<br>
+92、通过对检材“01-lott.sql”文件进行分析，关联t_trade_betrecord与t_lottery_jnd表，分析庄家&quot;188&quot;在2021-05-10投注&quot;jnd28&quot;时：当开奖结果为&quot;大&quot;时，玩家投注包含&quot;小&quot;的笔数占比（使用双位数格式，答案格式：11.11%）<br>
+93、通过对检材“02-crime_records.sql”分析，统计相邻两次作案时间间隔在1天之内的城市和该城市两次作案时间间隔在1天之内的案件总数量，找出案件总数最多的城市名。（答案格式：按照实际情况填写）<br>
+94、通过对检材“02-crime_records.sql”分析，根据案件的损失金额和伤情等级，将案件分为 “轻微案件”“一般案件”“重大案件”“其他”四类（分类规则如下），并统计 2023 年各类型案件的数量。轻微案件：损失金额≤10000 元且无人员受伤（injury_level 为空或未提及）；一般案件：损失金额 10001-50000 元，或有轻微伤；重大案件：损失金额 &gt; 50000 元，或有轻伤或有重伤；其他：非上述情况。（按照案件数量的降序输出答案，答案格式为：40/30/20/10）<br>
+95、通过对检材“02-crime_records.sql”分析，统计 2021-2023 年期间（含2021年和2023年），每年处理结果为 “移送起诉” 的案件里，每一年中损失总额最高的案件类型对应的损失总额为？（按 2021 - 2023 年顺序连接损失总额，连接符号使用/,小数点保留2位，答案格式为 ：1.37/2.21/3.45）<br>
+96、通过对检材“03-案件卡串号数据”表分析，该表每条数据的“卡串号(IMSI)”字段值存在问题，不可信。真实可信的卡串号值在“溯源”字段中（溯源字段的值格式均为“{手机号=[待获取的卡串号-&gt;手机卡串号(IMSI)使用过的手机号-&gt;当前]}”），请统计分析出该表中哪个真实卡串号出现过的次数最多？（答案格式：按照实际情况填写）<br>
+97、通过对检材“04-涉诈案件信息表“分析，统计每个分局2024-2025年每月被骗总额环比大于30%的月份个数（环比定义：（这个月的数据-上个月的数据）/上个月数据。特殊情况，例如某分局2025年1月被骗金额总和为100，若该分局2024年12月没有被骗金额，则该分局2025年1月也符合题目要求，应增加一个月份。2024年1月不需要计算与上个月的环比情况），请写出环比大于30%的月份个数最多的分局ID名称为？（答案格式：按照实际情况填写）<br>
+98、通过对检材“05-人像卡口信息表”和“06-涉毒前科人员信息表”（两表均无重复数据，直接要求答题即可。感知时间字段格式均为yyyy-MM-dd HH:mm:ss；传感器ID（人像卡口点位）值不同则代表不同的摄像点位），为摸排疑似涉毒的窝点，请分析出在00:00:00~06:00:00(含0点跟6点)人像记录中，哪个传感器点位ID抓拍到最多的不同涉毒前科人员？（答案格式：按照实际情况填写）<br>
+99、接上题，为摸排潜在的涉毒人员，请分析出有多少个非涉毒前科人员至少跟3个不同的涉毒前科人员同行过？（本题的“同行”指：两人在同一个人像卡口点位感知时间差在10（含）秒内）（答案格式：1）<br>
+100、近几年架设简易GOIP设备进行群呼诈骗的案件屡见不鲜。架设和维护该设备的人员通常会频繁更换酒店【即只住一天然后更换酒店】以此躲避公安的侦察打击。请根据”07-旅店住宿信息表“（该表无重复数据，直接要求答题即可。时间相关的字段格式均为yyyy-MM-dd HH:mm:ss），筛选出2024和2025年的住宿记录（以“入住时间”为准），频繁更换酒店的人员有几个？（答案格式：1）</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>2025.11.数证杯</p><p><a href="http://blog.g0ubu1i.online/posts/9c5c8488.html">http://blog.g0ubu1i.online/posts/9c5c8488.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>g0ubu1i</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2025-11-01</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2025-11-03</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/baebdd08.html"><span class="level-item">2025.03.wolvctf-wp</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card" id="comments"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=1738327323&amp;spec=640&amp;img_type=jpg" alt="g0ubu1i"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">g0ubu1i</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Xian China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">15</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">12</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/g0ubu1i" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/g0ubu1i"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Writeup/"><span class="level-start"><span class="level-item">Writeup</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/"><span class="level-start"><span class="level-item">平台搭建</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%B0%E8%AE%BA/"><span class="level-start"><span class="level-item">数论</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-11-01T09:02:11.000Z">2025-11-01</time></p><p class="title"><a href="/posts/9c5c8488.html">2025.11.数证杯</a></p><p class="categories"><a href="/categories/Writeup/">Writeup</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-03-30T15:17:05.000Z">2025-03-30</time></p><p class="title"><a href="/posts/baebdd08.html">2025.03.wolvctf-wp</a></p><p class="categories"><a href="/categories/Writeup/">Writeup</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-01-14T07:06:13.000Z">2025-01-14</time></p><p class="title"><a href="/posts/244cb481.html">信息搜集的艺术</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-11-15T16:20:45.000Z">2024-11-16</time></p><p class="title"><a href="/posts/4edcf23d.html">2024-11-ISCTF-Crypto-wp</a></p><p class="categories"><a href="/categories/Writeup/">Writeup</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-11-06T13:14:36.000Z">2024-11-06</time></p><p class="title"><a href="/posts/a9fc6368.html">数论-快速幂运算</a></p><p class="categories"><a href="/categories/%E6%95%B0%E8%AE%BA/">数论</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2025/11/"><span class="level-start"><span class="level-item">十一月 2025</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2025/03/"><span class="level-start"><span class="level-item">三月 2025</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2025/01/"><span class="level-start"><span class="level-item">一月 2025</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2024/11/"><span class="level-start"><span class="level-item">十一月 2024</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2024/06/"><span class="level-start"><span class="level-item">六月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2024/04/"><span class="level-start"><span class="level-item">四月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2024/03/"><span class="level-start"><span class="level-item">三月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2024/02/"><span class="level-start"><span class="level-item">二月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/10/"><span class="level-start"><span class="level-item">十月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/CTF/"><span class="tag">CTF</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GZCTF/"><span class="tag">GZCTF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HZNUCTF2024/"><span class="tag">HZNUCTF2024</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ISCTF/"><span class="tag">ISCTF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/NSSCCTF-Round-17/"><span class="tag">NSSCCTF_Round_#17</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/NTACTF/"><span class="tag">NTACTF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SHCTF/"><span class="tag">SHCTF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SICTF/"><span class="tag">SICTF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Writeup/"><span class="tag">Writeup</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/litctf/"><span class="tag">litctf</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/wp/"><span class="tag">wp</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/writeup/"><span class="tag">writeup</span><span class="tag">4</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="http://monoceros406.github.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Monoceros406</span></span><span class="level-right"><span class="level-item tag">monoceros406.github.io</span></span></a></li><li><a class="level is-mobile" href="https://wdh.hk/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Daaihang Wong</span></span><span class="level-right"><span class="level-item tag">wdh.hk</span></span></a></li><li><a class="level is-mobile" href="https://fault.thisis.host/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">fault</span></span><span class="level-right"><span class="level-item tag">fault.thisis.host</span></span></a></li><li><a class="level is-mobile" href="http://blog.phom.space" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">ph0m</span></span><span class="level-right"><span class="level-item tag">blog.phom.space</span></span></a></li><li><a class="level is-mobile" href="https://yunjian.zeabur.app/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">云间</span></span><span class="level-right"><span class="level-item tag">yunjian.zeabur.app</span></span></a></li><li><a class="level is-mobile" href="https://ly1-boop.github.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">ly1-boop</span></span><span class="level-right"><span class="level-item tag">ly1-boop.github.io</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">g0ubu1i&#039;s blog</a><p class="is-size-7"><span>&copy; 2025 g0ubu1i</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2025 g0ubu1i</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
