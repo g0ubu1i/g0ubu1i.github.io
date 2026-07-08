@@ -63,15 +63,15 @@
 <p>B-光滑数：若一个光滑数的最大小质数因子&lt;=B,则称该光滑数为B-光滑数</p>
 <span id="more"></span>
 <p>费马小定理:</p>
-<p><img src="http://img.goubuli.online/blog/20241104211624.svg+xml" alt="image"></p>
+<p><img src="https://img.g0ubu1i.top/blog/20241104211624.svg+xml" alt="image"></p>
 <h1>p-1光滑</h1>
-<p><img src="http://img.goubuli.online/blog/20241104211700.svg+xml" alt="image"></p>
+<p><img src="https://img.g0ubu1i.top/blog/20241104211700.svg+xml" alt="image"></p>
 <p>由于p为质数，设a为整数且与p互质，则有</p>
-<p><img src="http://img.goubuli.online/blog/20241104211731.svg+xml" alt="image"></p>
+<p><img src="https://img.g0ubu1i.top/blog/20241104211731.svg+xml" alt="image"></p>
 <p>又因为p-1为因子互不相同的B-光滑数，所以</p>
-<p><img src="http://img.goubuli.online/blog/20241104211838.svg+xml" alt="image"></p>
+<p><img src="https://img.g0ubu1i.top/blog/20241104211838.svg+xml" alt="image"></p>
 <p>故p的倍数可以求出来，且我们有n=p*q。所以</p>
-<p><img src="http://img.goubuli.online/blog/20241104211910.svg+xml" alt="image"></p>
+<p><img src="https://img.g0ubu1i.top/blog/20241104211910.svg+xml" alt="image"></p>
 <h3 id="pollard-s-p-1">Pollard’s p-1</h3>
 <p>由于我们只关注gcd的结果，不需要计算B！的值，我们只需要令B=1，2，3，…,计算出gcd结果即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line">a = <span class="number">2</span></span><br><span class="line">n = <span class="number">2</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    a = powmod(a, n, N)</span><br><span class="line">    res = gcd(a-<span class="number">1</span>, N)</span><br><span class="line">    <span class="keyword">if</span> res != <span class="number">1</span> <span class="keyword">and</span> res != N:</span><br><span class="line">        q = N // res</span><br><span class="line">        d = invert(e, (res-<span class="number">1</span>)*(q-<span class="number">1</span>))</span><br><span class="line">        m = powmod(c, d, N)</span><br><span class="line">        <span class="built_in">print</span>(m)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    n += <span class="number">1</span></span><br></pre></td></tr></table></figure>

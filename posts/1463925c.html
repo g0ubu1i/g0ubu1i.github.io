@@ -78,9 +78,9 @@
 <span id="more"></span>
 <p>找到类似的题目https://blog.csdn.net/diligent_lee/article/details/118944482<br>
 将日志拖到vscode中，全局搜索<code>banner_home.jpg</code>,发现在<code>23/Feb/2018:21:18:27 +0800</code>文件大小发生了明显的变化<br>
-<img src="https://img.goubuli.online/blog/20251125154827.jpg" alt="a858edd8a798b5561710772f2ca8dd4c_MD5"><br>
+<img src="https://img.g0ubu1i.top/blog/20251125154827.jpg" alt="a858edd8a798b5561710772f2ca8dd4c_MD5"><br>
 ip为183.62.9.42<br>
-<img src="https://img.goubuli.online/blog/20251125151817.jpg" alt="b8fb38371087dea261e0ba0462871924_MD5"><br>
+<img src="https://img.g0ubu1i.top/blog/20251125151817.jpg" alt="b8fb38371087dea261e0ba0462871924_MD5"><br>
 按顺序题目该ip访问的三个jsp文件，故flag为<br>
 flag{2018-2-23/183.62.9.42/table.jsp-en.jsp-2.jsp}</p>
 <h2 id="infosec-最近还好吗">[Infosec] 最近还好吗</h2>
@@ -89,22 +89,22 @@ flag{2018-2-23/183.62.9.42/table.jsp-en.jsp-2.jsp}</p>
 </blockquote>
 <p>根据题目描述是考察CVE漏洞，发放容器后发现是ssh环境，猜测为提权漏洞，无关联想到sudo的CVE-2025-32463，参考本人的工具https://github.com/g0ubu1i/up0x。<br>
 <code>sudo -V</code>查看sudo版本为<br>
-<img src="https://img.goubuli.online/blog/20251125154812.jpg" alt="47412abeb28f3c3c2ceb32d86890bd1b_MD5"><br>
+<img src="https://img.g0ubu1i.top/blog/20251125154812.jpg" alt="47412abeb28f3c3c2ceb32d86890bd1b_MD5"><br>
 克隆仓库<code>git clone https://github.com/pr0v3rbs/CVE-2025-32463_chwoot</code><br>
 运行<code>sh sudo-chwoot.sh</code>后成功提权。拿到flag<br>
-<img src="https://img.goubuli.online/blog/20251125151942.jpg" alt="49b49e16ba7be1984ea7c59afaec4fe3_MD5"></p>
+<img src="https://img.g0ubu1i.top/blog/20251125151942.jpg" alt="49b49e16ba7be1984ea7c59afaec4fe3_MD5"></p>
 <h2 id="infosec-redis爱你呦">[Infosec] Redis爱你呦</h2>
 <p>直接搜索题目描述定位到漏洞<br>
-<img src="https://img.goubuli.online/blog/20251125154803.jpg" alt="9796392fb2b291e9e8fab20dd01ff04e_MD5"><br>
+<img src="https://img.g0ubu1i.top/blog/20251125154803.jpg" alt="9796392fb2b291e9e8fab20dd01ff04e_MD5"><br>
 按照文章找到exp，搭建具有漏洞的镜像，复制出redis-server，直接运行脚本即可<br>
-<img src="https://img.goubuli.online/blog/20251125152112.jpg" alt="57232554256dfbe06b5ddd600f4bc955_MD5"></p>
+<img src="https://img.g0ubu1i.top/blog/20251125152112.jpg" alt="57232554256dfbe06b5ddd600f4bc955_MD5"></p>
 <h2 id="game-我勒个超级玛丽奥">[Game] 我勒个超级玛丽奥</h2>
 <blockquote>
 <p>我们那些回不去的童年和回忆，希望马里奥能带给你跨越时空的力量，题目开启后，请选手耐心等待环境启动、启动后耐心等待当刷新出noVNC界面即代表环境启动成功，A是跳跃、S是攻击、上下左右控制</p>
 </blockquote>
 <p>真就玩游戏<br>
 玩过关flag就出了<br>
-<img src="https://img.goubuli.online/blog/20251125154749.jpeg" alt="a3a0088fa36e4ce1028e23a80b0263fb_MD5"></p>
+<img src="https://img.g0ubu1i.top/blog/20251125154749.jpeg" alt="a3a0088fa36e4ce1028e23a80b0263fb_MD5"></p>
 
     </div>
   </div>
