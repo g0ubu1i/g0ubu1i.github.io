@@ -431,7 +431,8 @@ h4 {
 }
 
 .post-shell,
-.archive-shell {
+.archive-shell,
+.taxonomy-shell {
   max-width: var(--max);
   margin: 0 auto;
 }
@@ -922,6 +923,57 @@ mjx-container[display="true"],
 .archive-item span {
   min-width: 0;
   overflow-wrap: anywhere;
+}
+
+.taxonomy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.taxonomy-card,
+.taxonomy-empty {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow-green);
+}
+
+.taxonomy-card {
+  display: flex;
+  min-width: 0;
+  min-height: 92px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px;
+  transition: border-color 180ms ease-out, box-shadow 180ms ease-out, transform 180ms ease-out;
+}
+
+.taxonomy-card:hover {
+  border-color: var(--line-hot);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-2px);
+}
+
+.taxonomy-name {
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 24px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.taxonomy-count {
+  color: var(--green);
+  font: 600 12px/1.4 var(--mono);
+}
+
+.taxonomy-empty {
+  margin: 0;
+  padding: 22px;
+  color: var(--muted);
 }
 
 .pagination {
