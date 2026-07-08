@@ -156,6 +156,7 @@ canvas {
   align-items: center;
   gap: 12px;
   min-width: 0;
+  max-width: min(52vw, 360px);
   font-family: var(--display);
   font-size: clamp(20px, 3vw, 28px);
   letter-spacing: 0;
@@ -249,8 +250,14 @@ h4 {
 .hero h1,
 .post-header h1 {
   max-width: 900px;
-  font-size: clamp(42px, 8vw, 96px);
+  font-size: clamp(40px, 7vw, 90px);
   text-shadow: 0 0 28px rgba(34, 211, 238, 0.22);
+}
+
+.hero h1 {
+  width: min(100%, 12ch);
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .hero-description {
@@ -1138,9 +1145,20 @@ mjx-container[display="true"],
     justify-content: flex-start;
   }
 
-  .hero h1,
+  .brand {
+    max-width: calc(100vw - 58px);
+    font-size: clamp(18px, 5.4vw, 24px);
+  }
+
+  .hero h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(32px, 9.4vw, 52px);
+    line-height: 1.05;
+  }
+
   .post-header h1 {
-    font-size: clamp(38px, 13vw, 64px);
+    font-size: clamp(34px, 10vw, 58px);
   }
 
   .post-content {
@@ -1171,6 +1189,11 @@ mjx-container[display="true"],
   .post-content pre,
   figure.highlight .code pre {
     font-size: 12px;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 8.8vw, 38px);
+    white-space: nowrap;
   }
 
   .copy-code {
